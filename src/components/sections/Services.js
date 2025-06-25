@@ -1,5 +1,6 @@
 'use client';
 import { FiMonitor, FiLayout, FiCode, FiPenTool } from 'react-icons/fi';
+import Experience from './Experience';
 
 const services = [
   {
@@ -55,6 +56,8 @@ export default function Services() {
           ))}
         </div>
       </div>
+
+      <Experience />
     </section>
   );
 }

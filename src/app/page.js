@@ -6,12 +6,14 @@ import Portfolio from '../components/sections/Portfolio';
 import Kompetisi from '../components/sections/Kompetisi';
 import Contact from '../components/sections/Contact';
 import BlogPreview from '../components/sections/BlogPreview';
+import Experience from '../components/sections/Experience';
 
 export default function LandingPage() {
   return (
     <>
       <Home />
       {/* <Services /> */}
+      {/* <Experience /> */}
       <About />
       <Skills />
       <Portfolio />

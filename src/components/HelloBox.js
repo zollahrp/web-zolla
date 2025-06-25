@@ -9,13 +9,13 @@ export default function HelloBox() {
 
       {/* Kotak Kecil di 4 Sudut */}
       {/* Kiri Atas */}
-      <div className="w-3 h-3 bg-[#FBAA06] absolute top-[-6px] left-[-6px] z-20 border border-[#263650]" />
+      <div className="w-3 h-3 bg-[#FD853A] absolute top-[-6px] left-[-6px] z-20 border border-[#263650]" />
       {/* Kanan Atas */}
-      <div className="w-3 h-3 bg-[#FBAA06] absolute top-[-6px] right-[-6px] z-20 border border-[#263650]" />
+      <div className="w-3 h-3 bg-[#FD853A] absolute top-[-6px] right-[-6px] z-20 border border-[#263650]" />
       {/* Kiri Bawah */}
-      <div className="w-3 h-3 bg-[#FBAA06] absolute bottom-[-6px] left-[-6px] z-20 border border-[#263650]" />
+      <div className="w-3 h-3 bg-[#FD853A] absolute bottom-[-6px] left-[-6px] z-20 border border-[#263650]" />
       {/* Kanan Bawah */}
-      <div className="w-3 h-3 bg-[#FBAA06] absolute bottom-[-6px] right-[-6px] z-20 border border-[#263650]" />
+      <div className="w-3 h-3 bg-[#FD853A] absolute bottom-[-6px] right-[-6px] z-20 border border-[#263650]" />
     </div>
   );
 }

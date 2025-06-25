@@ -55,7 +55,7 @@ export default function Home() {
         {/* Miring */}
         <div className="bg-[#263650] -rotate-[2.1deg] origin-bottom h-[60px] w-[120%] absolute -left-10 -translate-y-2 z-10"></div>
         {/* Lurus */}
-        <div className="bg-[#FBAA06] py-4 relative z-10 overflow-hidden whitespace-nowrap">
+        <div className="bg-[#FD853A] py-4 relative z-10 overflow-hidden whitespace-nowrap">
           <div className="marquee-track">
             <span className="mx-8 text-white font-medium text-lg tracking-widest">App Design</span>
             <span className="mx-8 text-white font-medium text-lg tracking-widest">Website Design</span>
