@@ -8,7 +8,7 @@ export default function Home() {
   return (
     <section className="relative w-full overflow-hidden">
       {/* === Hero Section === */}
-      <div className="max-w-screen-xl mx-auto flex flex-col-reverse lg:flex-row items-center justify-between pt-20 px-8 lg:px-24 gap-10">
+      <div className="max-w-screen-xl mx-auto flex flex-col-reverse lg:flex-row items-center justify-between pt-20 px-8 lg:px-20 gap-10">
         {/* Left Text */}
         <div className="lg:w-1/2 w-full space-y-6 pb-10">
           <HelloBox />

@@ -11,7 +11,7 @@ export default function LandingPage() {
   return (
     <>
       <Home />
-      <Services />
+      {/* <Services /> */}
       <About />
       <Skills />
       <Portfolio />
