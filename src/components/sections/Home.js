@@ -6,7 +6,7 @@ import { FiDownload } from "react-icons/fi";
 
 export default function Home() {
   return (
-    <section className="relative w-full overflow-hidden">
+    <section className="relative w-full overflow-hidden mt-16">
       {/* === Hero Section === */}
       <div className="max-w-screen-xl mx-auto flex flex-col-reverse lg:flex-row items-center justify-between pt-20 px-8 lg:px-20 gap-10">
         {/* Left Text */}
@@ -41,7 +41,7 @@ export default function Home() {
           <Image
             src="/img/gambar_home.png"
             alt="Zolla Perdana"
-            width={400}
+            width={450}
             height={600}
             // className="object-cover h-[700px] !h-[700px]"
             className="relative z-10 object-cover"
@@ -51,7 +51,7 @@ export default function Home() {
       </div>
 
       {/* === Marquee Section === */}
-      <div className="relative w-full -mt-4 overflow-visible">
+      <div className="relative w-full overflow-visible">
         {/* Miring */}
         <div className="bg-[#263650] -rotate-[2.1deg] origin-bottom h-[60px] w-[120%] absolute -left-10 -translate-y-2 z-10"></div>
         {/* Lurus */}
