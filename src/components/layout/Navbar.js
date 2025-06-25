@@ -1,29 +1,30 @@
-'use client';
-import Link from 'next/link';
-import { useEffect, useState } from 'react';
+"use client";
+import Image from 'next/image';
+import Link from "next/link";
+import { useEffect, useState } from "react";
 
 const navLinks = [
-  { name: 'Home', href: '#home' },
-  { name: 'Services', href: '#service' },
-  { name: 'About', href: '#about' },
-  { name: 'Skills', href: '#skills' },
-  { name: 'Portfolio', href: '#portfolio' },
-  { name: 'Kompetisi', href: '#kompetisi' },
-  { name: 'Blogs', href: '#blogs' },
-  { name: 'Contact', href: '#contact' },
+  { name: "Home", href: "#home" },
+  { name: "Services", href: "#service" },
+  { name: "About", href: "#about" },
+  { name: "Skills", href: "#skills" },
+  { name: "Portfolio", href: "#portfolio" },
+  { name: "Kompetisi", href: "#kompetisi" },
+  { name: "Blogs", href: "#blogs" },
+  { name: "Contact", href: "#contact" },
 ];
 
 export default function Navbar() {
-  const [activeHash, setActiveHash] = useState('');
+  const [activeHash, setActiveHash] = useState("");
 
   useEffect(() => {
     const updateHash = () => {
-      setActiveHash(window.location.hash || '#home');
+      setActiveHash(window.location.hash || "#home");
     };
 
     updateHash();
-    window.addEventListener('hashchange', updateHash);
-    return () => window.removeEventListener('hashchange', updateHash);
+    window.addEventListener("hashchange", updateHash);
+    return () => window.removeEventListener("hashchange", updateHash);
   }, []);
 
   return (
@@ -36,7 +37,9 @@ export default function Navbar() {
               key={link.name}
               href={link.href}
               className={`px-4 py-2 rounded-full transition-all duration-300 ${
-                activeHash === link.href ? 'bg-[#FD853A] font-semibold' : 'hover:text-[#FD853A]'
+                activeHash === link.href
+                  ? "bg-[#FD853A] font-semibold"
+                  : "hover:text-[#FD853A]"
               }`}
             >
               {link.name}
@@ -46,9 +49,13 @@ export default function Navbar() {
 
         {/* Center Logo */}
         <div className="flex items-center gap-2">
-          <div className="w-8 h-8 bg-[#FD853A] text-white font-bold rounded-full flex items-center justify-center text-sm">
-            Z!
-          </div>
+          <Image
+            src="/img/logo_zh.jpeg"
+            alt="Logo Zolla"
+            width={34}
+            height={34}
+            className="rounded-full object-cover"
+          />
           <span className="font-bold tracking-wide text-white">ZOLLAHRP</span>
         </div>
 
@@ -59,7 +66,9 @@ export default function Navbar() {
               key={link.name}
               href={link.href}
               className={`px-4 py-2 rounded-full transition-all duration-300 ${
-                activeHash === link.href ? 'bg-[#FD853A] font-semibold' : 'hover:text-[#FD853A]'
+                activeHash === link.href
+                  ? "bg-[#FD853A] font-semibold"
+                  : "hover:text-[#FD853A]"
               }`}
             >
               {link.name}

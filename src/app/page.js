@@ -13,7 +13,7 @@ export default function LandingPage() {
     <>
       <Home />
       {/* <Services /> */}
-      {/* <Experience /> */}
+      <Experience />
       <About />
       <Skills />
       <Portfolio />

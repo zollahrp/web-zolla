@@ -28,7 +28,7 @@ export default function Experience() {
   ];
 
   return (
-    <section id="experience" className="bg-white py-20">
+    <section id="experience" className="bg-white py-0">
       <div className="max-w-screen-xl mx-auto px-6 lg:px-20 text-center">
         {/* Title */}
         <div className="flex justify-center items-center gap-2 mb-2">
@@ -49,7 +49,7 @@ export default function Experience() {
           {data.map((item, i) => (
             <div
               key={i}
-              className="grid grid-cols-[2fr_40px_2fr] items-center mb-16 relative"
+              className="grid grid-cols-[2fr_40px_2fr] items-center mb-14 relative"
             >
               {/* Left Side */}
               <div className="text-right pr-10">

@@ -56,8 +56,7 @@ export default function Services() {
           ))}
         </div>
       </div>
-
-      <Experience />
+      {/* <Experience /> */}
     </section>
   );
 }
