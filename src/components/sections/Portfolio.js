@@ -43,7 +43,7 @@ export default function Portfolio() {
           {projects.map((project, i) => (
             <div key={i} className="bg-white rounded-2xl p-4 shadow-sm">
               {/* Gambar (placeholder) */}
-              <div className="w-full h-48 bg-black rounded-xl mb-4" />
+              <div className="w-full h-58 bg-black rounded-xl mb-4" />
 
               {/* Label + Tanggal */}
               <div className="flex items-center justify-between mb-2">

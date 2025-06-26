@@ -1,7 +1,7 @@
 "use client";
 import Image from "next/image";
 import HelloBox from "../HelloBox";
-import Services from './Services';
+import Services from "./Services";
 import { FiDownload } from "react-icons/fi";
 
 export default function Home() {
@@ -57,38 +57,86 @@ export default function Home() {
         {/* Lurus */}
         <div className="bg-[#FD853A] py-4 relative z-10 overflow-hidden whitespace-nowrap">
           <div className="marquee-track">
-            <span className="mx-8 text-white font-medium text-lg tracking-widest">UI/UX Design</span>
-            <span className="mx-8 text-white font-medium text-lg tracking-widest">Website Design</span>
-            <span className="mx-8 text-white font-medium text-lg tracking-widest">Fullstack Developer</span>
-            <span className="mx-8 text-white font-medium text-lg tracking-widest">Writing</span>
-            <span className="mx-8 text-white font-medium text-lg tracking-widest">Research</span>
-            <span className="mx-8 text-white font-medium text-lg tracking-widest">Problem Solving</span>
-            <span className="mx-8 text-white font-medium text-lg tracking-widest">UI/UX Design</span>
-            <span className="mx-8 text-white font-medium text-lg tracking-widest">Website Design</span>
-            <span className="mx-8 text-white font-medium text-lg tracking-widest">Fullstack Developer</span>
-            <span className="mx-8 text-white font-medium text-lg tracking-widest">Writing</span>
-            <span className="mx-8 text-white font-medium text-lg tracking-widest">Research</span>
-            <span className="mx-8 text-white font-medium text-lg tracking-widest">Problem Solving</span>
+            <span className="mx-8 text-white font-medium text-lg tracking-widest">
+              UI/UX Design
+            </span>
+            <span className="mx-8 text-white font-medium text-lg tracking-widest">
+              Website Design
+            </span>
+            <span className="mx-8 text-white font-medium text-lg tracking-widest">
+              Fullstack Developer
+            </span>
+            <span className="mx-8 text-white font-medium text-lg tracking-widest">
+              Writing
+            </span>
+            <span className="mx-8 text-white font-medium text-lg tracking-widest">
+              Research
+            </span>
+            <span className="mx-8 text-white font-medium text-lg tracking-widest">
+              Problem Solving
+            </span>
+            <span className="mx-8 text-white font-medium text-lg tracking-widest">
+              UI/UX Design
+            </span>
+            <span className="mx-8 text-white font-medium text-lg tracking-widest">
+              Website Design
+            </span>
+            <span className="mx-8 text-white font-medium text-lg tracking-widest">
+              Fullstack Developer
+            </span>
+            <span className="mx-8 text-white font-medium text-lg tracking-widest">
+              Writing
+            </span>
+            <span className="mx-8 text-white font-medium text-lg tracking-widest">
+              Research
+            </span>
+            <span className="mx-8 text-white font-medium text-lg tracking-widest">
+              Problem Solving
+            </span>
           </div>
           <div className="marquee-track">
-            <span className="mx-8 text-white font-medium text-lg tracking-widest">UI/UX Design</span>
-            <span className="mx-8 text-white font-medium text-lg tracking-widest">Website Design</span>
-            <span className="mx-8 text-white font-medium text-lg tracking-widest">Fullstack Developer</span>
-            <span className="mx-8 text-white font-medium text-lg tracking-widest">Writing</span>
-            <span className="mx-8 text-white font-medium text-lg tracking-widest">Research</span>
-            <span className="mx-8 text-white font-medium text-lg tracking-widest">Problem Solving</span>
-            <span className="mx-8 text-white font-medium text-lg tracking-widest">UI/UX Design</span>
-            <span className="mx-8 text-white font-medium text-lg tracking-widest">Website Design</span>
-            <span className="mx-8 text-white font-medium text-lg tracking-widest">Fullstack Developer</span>
-            <span className="mx-8 text-white font-medium text-lg tracking-widest">Writing</span>
-            <span className="mx-8 text-white font-medium text-lg tracking-widest">Research</span>
-            <span className="mx-8 text-white font-medium text-lg tracking-widest">Problem Solving</span>
+            <span className="mx-8 text-white font-medium text-lg tracking-widest">
+              UI/UX Design
+            </span>
+            <span className="mx-8 text-white font-medium text-lg tracking-widest">
+              Website Design
+            </span>
+            <span className="mx-8 text-white font-medium text-lg tracking-widest">
+              Fullstack Developer
+            </span>
+            <span className="mx-8 text-white font-medium text-lg tracking-widest">
+              Writing
+            </span>
+            <span className="mx-8 text-white font-medium text-lg tracking-widest">
+              Research
+            </span>
+            <span className="mx-8 text-white font-medium text-lg tracking-widest">
+              Problem Solving
+            </span>
+            <span className="mx-8 text-white font-medium text-lg tracking-widest">
+              UI/UX Design
+            </span>
+            <span className="mx-8 text-white font-medium text-lg tracking-widest">
+              Website Design
+            </span>
+            <span className="mx-8 text-white font-medium text-lg tracking-widest">
+              Fullstack Developer
+            </span>
+            <span className="mx-8 text-white font-medium text-lg tracking-widest">
+              Writing
+            </span>
+            <span className="mx-8 text-white font-medium text-lg tracking-widest">
+              Research
+            </span>
+            <span className="mx-8 text-white font-medium text-lg tracking-widest">
+              Problem Solving
+            </span>
           </div>
         </div>
       </div>
 
       {/* === Services Section === */}
-        <Services />
+      <Services />
     </section>
   );
 }
