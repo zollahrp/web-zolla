@@ -2,7 +2,7 @@ import { FaEnvelope, FaInstagram, FaLinkedin, FaGithub } from "react-icons/fa";
 
 export default function Contact() {
   return (
-    <section className="py-20 bg-white">
+    <section id="contact" className="py-20 bg-white">
       <div className="max-w-screen-md mx-auto text-center px-8">
         {/* Title */}
         <h2 className="text-3xl sm:text-4xl font-bold mb-8">

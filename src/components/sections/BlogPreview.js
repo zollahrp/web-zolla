@@ -27,11 +27,19 @@ const blogs = [
       "Aenean eleifend ante maecenas pulvinar montes lorem et pede dis dolor pretium donec dictum. Vici consequat justo enim. Venenatis eget adipiscing luctus lorem.",
     image: "/img/blog_1.jpg",
   },
+  {
+    title: "Integer Maecenas Eget Viverra",
+    category: "Website",
+    date: "6 Juni 2025",
+    excerpt:
+      "Aenean eleifend ante maecenas pulvinar montes lorem et pede dis dolor pretium donec dictum. Vici consequat justo enim. Venenatis eget adipiscing luctus lorem.",
+    image: "/img/blog_1.jpg",
+  },
 ];
 
 export default function BlogPreview() {
   return (
-    <section className="pt-20 bg-gray-50 py-20">
+    <section id="blogs" className="pt-20 bg-gray-50 py-20">
       {/* Header Section */}
       <div className="max-w-screen-xl mx-auto flex flex-col-reverse lg:flex-row items-center justify-between px-8 lg:px-20 gap-10">
         {/* Kiri - Teks */}

@@ -35,7 +35,7 @@ const services = [
 
 export default function Services() {
   return (
-    <section className="bg-white py-20" id="services">
+    <section className="bg-white py-20" id="service">
       <div className="max-w-screen-xl mx-auto px-8 lg:px-20">
         {/* Header */}
         <div className="mb-20 text-left"> {/* <- jarak ditambah di sini */}
