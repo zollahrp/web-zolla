@@ -2,7 +2,7 @@ export default function HelloBox() {
   return (
     <div className="relative inline-block px-8 py-2 text-[#263650] font-semibold">
       {/* Teks */}
-      <span className="relative z-10 text-lg">Hello There!</span>
+      <span className="relative z-10 text-lg">Hallo Semua!</span>
 
       {/* Garis Horizontal */}
       <span className="absolute inset-0 border border-[#263650] z-0"></span>

@@ -39,12 +39,12 @@ export default function Skills() {
       <div className="max-w-screen-xl mx-auto px-8 lg:px-20">
         {/* Title */}
         <div className="flex items-center gap-2 mb-2">
-          <FaTools className="text-black" size={20} />
+          <FaTools className="text-[#FD853A]" size={20} />
           <span className="font-semibold text-black">Skills</span>
         </div>
 
         <h2 className="text-3xl sm:text-4xl font-bold mb-10">
-          My <span className="text-[#FD853A]">Expertise</span>
+          <span className="text-[#FD853A]">Keahlian </span> yang Saya Miliki
         </h2>
 
         {/* Skills Grid */}

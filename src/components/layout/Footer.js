@@ -7,45 +7,41 @@ import {
 
 export default function Footer() {
   return (
-    <footer className="bg-[#263650] text-white pt-20 px-8 lg:px-20">
+    <footer className="bg-[#263650] text-white pt-0 px-8 lg:px-20">
       {/* Atas */}
-      <div className="max-w-screen-xl mx-auto grid lg:grid-cols-4 gap-10 pb-10 border-b border-white/20">
-        {/* Kolom 1: Title & Desc */}
-        <div className="lg:col-span-1 space-y-4">
+      {/* <div className="max-w-screen-xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-10 pb-10 border-b border-white/20">
+        <div className="space-y-4">
           <h2 className="text-2xl font-bold">Let's Connect</h2>
-          <p className="text-sm text-white/70">
+          <p className="text-sm text-white/70 leading-relaxed">
             Terima kasih sudah berkunjung ke website ini. Silakan hubungi saya
             atau ikuti media sosial untuk kolaborasi lebih lanjut.
           </p>
-          <div className="flex gap-4 text-xl mt-4">
+          <div className="flex gap-4 text-xl mt-2">
             <a href="https://instagram.com/zollahrp" target="_blank">
               <FaInstagram />
             </a>
-            <a
-              href="https://linkedin.com/in/zolla-perdana-putra-harahap"
-              target="_blank"
-            >
+            <a href="https://linkedin.com/in/zolla" target="_blank">
               <FaLinkedin />
             </a>
             <a href="https://github.com/zollahrp" target="_blank">
               <FaGithub />
             </a>
           </div>
-        </div>
+        </div> */}
 
-        {/* Kolom 2: Navigasi */}
-        <div>
-          <h4 className="text-lg font-semibold text-[#FBAA06] mb-4">
+      {/* Kolom 2 */}
+      {/* <div className="text-center">
+          <h4 className="text-lg font-semibold text-[#FBAA06] mb-3">
             Navigation
           </h4>
-          <ul className="space-y-2 text-sm">
+          <ul className="space-y-1 text-sm leading-tight">
             {[
               "Home",
               "Services",
               "About",
               "Skills",
               "Portfolio",
-              "Pencapaian",
+              "Awards",
               "Blogs",
               "Contact",
             ].map((item) => (
@@ -56,53 +52,39 @@ export default function Footer() {
               </li>
             ))}
           </ul>
-        </div>
+        </div> */}
 
-        {/* Kolom 3: Contact */}
-        <div>
-          <h4 className="text-lg font-semibold text-[#FBAA06] mb-4">Contact</h4>
-          <ul className="space-y-2 text-sm">
-            <li>
-              <a href="mailto:zollahrp@gmail.com">zollahrp@gmail.com</a>
-            </li>
-            <li>
-              <a href="https://zolla-portfolio.com" target="_blank">
-                zolla-portfolio.com
-              </a>
-            </li>
-          </ul>
-        </div>
-
-        {/* Kolom 4: Newsletter */}
-        <div>
-          <h4 className="text-lg font-semibold text-[#FBAA06] mb-4">
-            Get the latest information
-          </h4>
-          <form className="flex items-center border border-white rounded-full overflow-hidden">
-            <input
-              type="email"
-              placeholder="Email Address"
-              className="flex-1 px-4 py-2 text-black text-sm outline-none"
-            />
-            <button
-              type="submit"
-              className="bg-[#FD853A] px-4 h-full flex items-center justify-center"
-            >
-              <FaArrowRight className="text-white" />
-            </button>
-          </form>
-        </div>
-      </div>
+      {/* Kolom 3 (Contact + Newsletter) */}
+      {/* <div className="space-y-4 text-right">
+          <div>
+            <h4 className="text-lg font-semibold text-[#FBAA06] mb-2">
+              Contact
+            </h4>
+            <ul className="text-sm space-y-1">
+              <li>
+                <a href="mailto:zollahrp@gmail.com">zollahrp@gmail.com</a>
+              </li>
+              <li>
+                <a href="https://zolla-portfolio.com" target="_blank">
+                  zolla-portfolio.com
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div> */}
 
       {/* Bawah */}
-      <div className="max-w-screen-xl mx-auto py-6 flex flex-col md:flex-row justify-between items-center text-xs text-white/70 gap-2">
-        <p>© {new Date().getFullYear()} Zolla. All Rights Reserved.</p>
+      <div className="max-w-screen-xl mx-auto py-4 flex flex-col md:flex-row justify-center items-center text-xs text-white/70 gap-2">
+        <p className="flex items-center gap-2 text-center">
+          © {new Date().getFullYear()} Zolla Perdana Putra Harahap
+          <span className="hidden md:inline-block">|</span>
+        </p>
         <div className="flex gap-4">
           <a href="#" className="hover:underline">
-            User Terms & Conditions
+            Terms
           </a>
           <a href="#" className="hover:underline">
-            Privacy Policy
+            Privacy
           </a>
         </div>
       </div>

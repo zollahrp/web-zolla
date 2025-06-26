@@ -1,6 +1,6 @@
-'use client';
-import Image from 'next/image';
-import { FiUser, FiDownload } from 'react-icons/fi';
+"use client";
+import Image from "next/image";
+import { FiUser, FiDownload } from "react-icons/fi";
 
 export default function About() {
   return (
@@ -29,40 +29,86 @@ export default function About() {
           </div>
 
           <h2 className="text-3xl sm:text-4xl font-bold mb-4">
-            Who is <span className="text-[#FD853A]">Zolla Perdana</span>?
+            Siapa itu <span className="text-[#FD853A]">Zolla Perdana</span>?
           </h2>
 
           <p className="text-black text-base sm:text-lg leading-relaxed mb-8">
-            Mahasiswa Sarjana Terapan Teknologi Rekayasa Perangkat Lunak di Sekolah Vokasi IPB University yang memiliki nama lengkap Zolla Perdana Putra Harahap ini memiliki adaptif, penuh rasa ingin tahu, dan berjiwa inovator. Aktif mengejar tantangan di bidang teknologi, lingkungan, dan pendidikan dengan pendekatan kreatif dan inovatif.
+            Seorang Mahasiswa Sarjana Terapan Teknologi Rekayasa Perangkat Lunak
+            di Sekolah Vokasi IPB University yang dikenal memiliki sifat
+            adaptif, penuh rasa ingin tahu, dan berjiwa inovator. Aktif
+            mengikuti berbagai kompetisi dan menjelajahi tantangan di bidang
+            teknologi, lingkungan, dan pendidikan melalui pendekatan yang
+            kreatif dan inovatif.
           </p>
 
           {/* Stat */}
-          <div className="flex gap-12 text-[#FD853A] font-bold text-3xl mb-8">
-            <div>
+          <div className="grid grid-cols-3 gap-6 text-center text-[#FD853A] font-bold text-3xl mb-8">
+            {/* Project */}
+            <div className="border-r border-gray-300">
               <p>10+</p>
-              <p className="text-black text-sm font-medium">Project selesai</p>
+              <p className="text-black text-sm font-medium mt-1">
+                Project Selesai
+              </p>
             </div>
-            <div>
+
+            {/* Kompetisi */}
+            <div className="border-r border-gray-300">
               <p>24</p>
-              <p className="text-black text-sm font-medium">Mengikuti Kompetisi</p>
+              <p className="text-black text-sm font-medium mt-1">
+                Mengikuti Kompetisi
+              </p>
             </div>
+
+            {/* Pengalaman */}
             <div>
               <p>2</p>
-              <p className="text-black text-sm font-medium">Tahun pengalaman</p>
+              <p className="text-black text-sm font-medium mt-1">
+                Tahun Pengalaman
+              </p>
             </div>
           </div>
 
-          {/* Button + Tanda tangan */}
+          {/* Button + Tanda Tangan */}
           <div className="flex items-center gap-6">
+            {/* Button Download CV */}
             <a
               href="/cv.pdf"
-              className="inline-flex items-center gap-2 px-6 py-3 bg-[#263650] text-white rounded-full border-2 border-[#FD853A] hover:bg-[#FD853A] hover:text-white transition-all duration-300"
               download
+              className="relative w-[300px] block group"
             >
-              <FiDownload className="text-xl" />
-              Download CV
+              {/* Background Orange */}
+              <div className="bg-[#FD853A] h-[42px] w-[250px] rounded-full"></div>
+
+              {/* Button Biru Tua */}
+              <div className="absolute top-0 left-0 bg-[#263650] text-white rounded-full h-[42px] w-[180px] flex items-center justify-between pl-6 pr-10 z-10">
+                <span className="text-sm md:text-base whitespace-nowrap">
+                  Download CV Saya
+                </span>
+              </div>
+
+              {/* Icon Download + Bulatan Putih */}
+              <div className="absolute top-1/2 left-[190px] -translate-y-1/2 bg-white w-[38px] h-[38px] rounded-full flex items-center justify-center z-20">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  strokeWidth="2.5"
+                  stroke="currentColor"
+                  className="w-5 h-5 text-black transform transition-transform duration-300 ease-in-out group-hover:translate-y-1"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2M7 10l5 5m0 0l5-5m-5 5V4"
+                  />
+                </svg>
+              </div>
             </a>
-            <span className="text-[#FD853A] italic font-[cursive] text-xl">Zolla Perdana</span>
+
+            {/* Tanda Tangan */}
+            <span className="text-[#FD853A] italic [font-family:'Great_Vibes',_cursive] text-xl">
+              Zolla Perdana Putra Harahap
+            </span>
           </div>
         </div>
       </div>

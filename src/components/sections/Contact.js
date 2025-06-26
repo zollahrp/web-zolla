@@ -6,8 +6,8 @@ export default function Contact() {
       <div className="max-w-screen-md mx-auto text-center px-8">
         {/* Title */}
         <h2 className="text-3xl sm:text-4xl font-bold mb-8">
-          Ingin terhubung dan berdiskusi?{" "}
-          <span className="text-[#FD853A]">Kirim pesan</span>
+          Memiliki ide, pertanyaan, atau kolaborasi? Saya terbuka untuk{" "}
+          <span className="text-[#FD853A]">berdiskusi dan bekerja sama.</span>
         </h2>
 
         {/* Form */}
@@ -38,14 +38,14 @@ export default function Contact() {
           <a href="https://www.instagram.com/zollahrp" target="_blank" className="flex items-center gap-2 hover:underline">
             <FaInstagram /> @zollahrp
           </a>
-          <a href="https://www.linkedin.com/in/zolla-perdana-putra-harahap" target="_blank" className="flex items-center gap-2 hover:underline">
+          <a href="https://www.linkedin.com/in/zolla/" target="_blank" className="flex items-center gap-2 hover:underline">
             <FaLinkedin /> Zolla Perdana Putra Harahap
           </a>
           <a href="https://github.com/zollahrp" target="_blank" className="flex items-center gap-2 hover:underline">
             <FaGithub /> zollahrp
           </a>
         </div>
-      </div>
+      </div> <br></br><br></br>
     </section>
   );
 }

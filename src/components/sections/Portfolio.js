@@ -1,14 +1,15 @@
-'use client';
-import { FiArrowRight } from 'react-icons/fi';
-import { FaStar } from 'react-icons/fa';
+"use client";
+import Image from "next/image";
+import { FiArrowRight } from "react-icons/fi";
+import { FaStar } from "react-icons/fa";
 
 const projects = [
   {
-    title: 'Judul Project',
-    desc: 'Deskripsi singkat project',
-    category: 'Website',
-    date: 'Jun 2025',
-    image: '/img/sample.jpg', // ganti dengan path sebenarnya
+    title: "Judul Project",
+    desc: "Deskripsi singkat project",
+    category: "Website",
+    date: "Jun 2025",
+    image: "/img/blog_1.JPG", // samakan persis
   },
   // tambahkan data lainnya
 ];
@@ -29,12 +30,34 @@ export default function Portfolio() {
             </h2>
           </div>
 
-          <a
-            href="/projects"
-            className="inline-flex items-center gap-2 px-5 py-2 bg-[#263650] text-white rounded-full border-2 border-[#FD853A] hover:bg-[#FD853A] transition-all"
-          >
-            Lihat semua projects
-            <FiArrowRight />
+          <a href="/projects" className="relative w-[290px] group">
+            {/* Background Orange */}
+            <div className="bg-[#FD853A] h-[42px] w-[270px] rounded-full" />
+
+            {/* Button Biru Tua */}
+            <div className="absolute top-0 left-0 bg-[#263650] text-white rounded-full h-[42px] w-[200px] flex items-center justify-between pl-6 pr-10 z-10">
+              <span className="text-sm md:text-base whitespace-nowrap">
+                Lihat Semua Projects
+              </span>
+            </div>
+
+            {/* Icon Panah + Bulatan Putih */}
+            <div className="absolute top-1/2 left-[210px] -translate-y-1/2 transform transition-transform duration-300 ease-in-out group-hover:translate-x-2 bg-white w-[38px] h-[38px] rounded-full flex items-center justify-center z-20">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth="2.5"
+                stroke="currentColor"
+                className="w-5 h-5 text-black"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M13.25 4.75L20.25 11.75L13.25 18.75M4 11.75H20.25"
+                />
+              </svg>
+            </div>
           </a>
         </div>
 
@@ -43,7 +66,14 @@ export default function Portfolio() {
           {projects.map((project, i) => (
             <div key={i} className="bg-white rounded-2xl p-4 shadow-sm">
               {/* Gambar (placeholder) */}
-              <div className="w-full h-58 bg-black rounded-xl mb-4" />
+              <div className="w-full h-[272px] relative rounded-xl overflow-hidden mb-4">
+                <Image
+                  src={project.image}
+                  alt={project.title}
+                  fill
+                  className="object-cover"
+                />
+              </div>
 
               {/* Label + Tanggal */}
               <div className="flex items-center justify-between mb-2">
@@ -56,13 +86,6 @@ export default function Portfolio() {
               {/* Judul */}
               <h3 className="text-lg font-bold text-black">{project.title}</h3>
               <p className="text-sm text-gray-600">{project.desc}</p>
-
-              {/* Icon panah */}
-              <div className="flex justify-end mt-4">
-                <div className="w-8 h-8 bg-[#263650] text-white flex items-center justify-center rounded-full hover:bg-[#FD853A] transition">
-                  <FiArrowRight size={16} />
-                </div>
-              </div>
             </div>
           ))}
         </div>

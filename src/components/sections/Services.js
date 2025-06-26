@@ -6,22 +6,30 @@ const services = [
   {
     icon: <FiLayout className="text-3xl text-[#263650]" />, // ukuran icon dikurangi juga
     title: 'UI/UX Design',
-    description: 'Desain antarmuka dan pengalaman pengguna yang menarik dan intuitif.',
+    description: (
+    <>
+      Mendesain antarmuka dan pengalaman pengguna yang menarik dan <em>user-friendly</em>.
+    </>
+  ),
   },
   {
     icon: <FiMonitor className="text-3xl text-[#263650]" />,
     title: 'Website Design',
-    description: 'Pembuatan desain website modern, responsif, dan cepat.',
+    description: (
+    <>
+      Mendesain tampilan website yang menarik, responsif, dan <em>user-friendly</em>.
+    </>
+    ),
   },
   {
     icon: <FiCode className="text-3xl text-[#263650]" />,
     title: 'Fullstack Developer',
-    description: 'Pengembangan web dari sisi frontend dan backend secara menyeluruh.',
+    description: 'Membangun website secara menyeluruh, mulai dari frontend hingga backend.',
   },
   {
     icon: <FiPenTool className="text-3xl text-[#263650]" />,
-    title: 'Creative Writing',
-    description: 'Penulisan konten kreatif untuk esai, artikel, dan narasi branding.',
+    title: 'Writing',
+    description: 'Menulis esai, artikel, dan berbagai karya tulis sebagai sarana ekspresi dan kontribusi intelektual.',
   },
 ];
 
@@ -36,7 +44,7 @@ export default function Services() {
             <span className="font-semibold text-gray-700">Services</span>
           </div>
           <h2 className="text-3xl sm:text-4xl font-bold">
-            <span className="text-[#FD853A]">Services</span> <span className="text-[#263650]">I Provide</span>
+            <span className="text-[#FD853A]">Layanan</span> <span className="text-[#263650]">yang Saya Tawarkan</span>
           </h2>
         </div>
 
