@@ -1,3 +1,4 @@
+"use client";
 import { FaEnvelope, FaInstagram, FaLinkedin, FaGithub } from "react-icons/fa";
 
 export default function Contact() {

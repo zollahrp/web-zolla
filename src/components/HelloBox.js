@@ -1,3 +1,4 @@
+"use client";
 export default function HelloBox() {
   return (
     <div className="relative inline-block px-8 py-2 text-[#263650] font-semibold">
