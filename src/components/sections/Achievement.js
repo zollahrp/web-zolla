@@ -62,14 +62,24 @@ export default function Achievement() {
     <section id="achievement" className="bg-white py-20">
       <div className="max-w-screen-xl mx-auto px-8 lg:px-20">
         {/* Title */}
-        <div className="flex items-center gap-2 mb-2">
+        <motion.div className="flex items-center gap-2 mb-2"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.1 }}
+          viewport={{ once: true }}
+        >
           <FaAward className="text-[#FD853A]" size={20} />
           <span className="font-semibold text-black">Achievement</span>
-        </div>
+        </motion.div>
 
-        <h2 className="text-3xl sm:text-4xl font-bold mb-10">
+        <motion.h2 className="text-3xl sm:text-4xl font-bold mb-10"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.1 }}
+          viewport={{ once: true }}
+        >
           <span className="text-[#FD853A]">Pencapaian</span> yang saya peroleh
-        </h2>
+        </motion.h2>
 
         {/* Grid Achievement */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-0">

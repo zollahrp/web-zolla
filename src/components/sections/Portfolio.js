@@ -12,7 +12,7 @@ const projects = [
     date: "Jun 2025",
     image: "/img/blog_1.JPG",
   },
-    {
+  {
     title: "Judul Project",
     desc: "Deskripsi singkat project",
     category: "Website",
@@ -29,22 +29,46 @@ export default function Portfolio() {
         {/* Header */}
         <div className="flex justify-between items-center mb-10">
           <div>
-            <div className="flex items-center gap-2 mb-2">
+            <motion.div
+              className="flex items-center gap-2 mb-2"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+              viewport={{ once: true }}
+            >
               <FaStar className="text-[#FD853A]" />
               <span className="text-black font-semibold">Portfolio</span>
-            </div>
-            <h2 className="text-3xl sm:text-4xl font-bold">
+            </motion.div>
+            <motion.h2
+              className="text-3xl sm:text-4xl font-bold"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+              viewport={{ once: true }}
+            >
               <span className="text-[#FD853A]">Project</span> Terbaru saya
-            </h2>
+            </motion.h2>
           </div>
 
-          <a href="/projects" className="relative w-[290px] group">
+          <motion.a
+            href="/projects"
+            className="relative w-[290px] group"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            viewport={{ once: true }}
+          >
+            {/* Background Orange */}
             <div className="bg-[#FD853A] h-[42px] w-[270px] rounded-full" />
+
+            {/* Button Biru Tua */}
             <div className="absolute top-0 left-0 bg-[#263650] text-white rounded-full h-[42px] w-[200px] flex items-center justify-between pl-6 pr-10 z-10">
               <span className="text-sm md:text-base whitespace-nowrap">
                 Lihat Semua Projects
               </span>
             </div>
+
+            {/* Icon Panah + Bulatan Putih */}
             <div className="absolute top-1/2 left-[210px] -translate-y-1/2 transform transition-transform duration-300 ease-in-out group-hover:translate-x-2 bg-white w-[38px] h-[38px] rounded-full flex items-center justify-center z-20">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -61,7 +85,7 @@ export default function Portfolio() {
                 />
               </svg>
             </div>
-          </a>
+          </motion.a>
         </div>
 
         {/* Grid Project */}

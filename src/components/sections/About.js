@@ -2,12 +2,12 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { FiUser } from "react-icons/fi";
+import CountUp from "@/components/elements/CountUp";
 
 export default function About() {
   return (
     <section id="about" className="bg-[#F2F4F7] py-20">
       <div className="max-w-screen-xl mx-auto flex flex-col lg:flex-row items-center justify-between px-8 lg:px-20 gap-12">
-
         {/* === Left - Foto === */}
         <motion.div
           className="w-full lg:w-2/4 flex justify-center relative"
@@ -79,39 +79,71 @@ export default function About() {
           </motion.p>
 
           {/* Statistik */}
-          <motion.div
-            className="grid grid-cols-3 gap-6 text-center text-[#FD853A] font-bold text-3xl mb-8"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.8 }}
-            viewport={{ once: true }}
-          >
+          <div className="grid grid-cols-3 gap-6 text-center text-[#FD853A] font-bold text-3xl mb-8">
             <div className="border-r border-gray-300">
-              <p>10+</p>
-              <p className="text-black text-sm font-medium mt-1">
+              <motion.span
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.8 }}
+                viewport={{ once: true }}
+              >
+                <CountUp to={10} duration={1.2} delay={0.4} />
+              </motion.span>
+              <motion.p className="text-black text-sm font-medium mt-1"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.8 }}
+                viewport={{ once: true }}
+                >
                 Project Selesai
-              </p>
+              </motion.p>
             </div>
+
             <div className="border-r border-gray-300">
-              <p>24</p>
-              <p className="text-black text-sm font-medium mt-1">
+              <motion.span
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.8 }}
+                viewport={{ once: true }}
+              >
+                <CountUp to={24} duration={1.5} delay={0.6} />
+              </motion.span>
+              <motion.p className="text-black text-sm font-medium mt-1"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.8 }}
+                viewport={{ once: true }}
+                >
                 Mengikuti Kompetisi
-              </p>
+              </motion.p>
             </div>
+
             <div>
-              <p>2</p>
-              <p className="text-black text-sm font-medium mt-1">
+              <motion.span
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.8 }}
+                viewport={{ once: true }}
+              >
+                <CountUp to={2} duration={1.3} delay={0.8} />
+              </motion.span>
+              <motion.p className="text-black text-sm font-medium mt-1"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.8 }}
+                viewport={{ once: true }}
+                >
                 Tahun Pengalaman
-              </p>
+              </motion.p>
             </div>
-          </motion.div>
+          </div>
 
           {/* Tombol dan Tanda Tangan */}
           <motion.div
             className="flex items-center gap-6"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.9 }}
+            transition={{ duration: 0.6, delay: 1.1 }}
             viewport={{ once: true }}
           >
             {/* Button Download CV */}

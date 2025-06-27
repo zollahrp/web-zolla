@@ -45,25 +45,46 @@ export default function BlogPreview() {
       <div className="max-w-screen-xl mx-auto flex flex-col-reverse lg:flex-row items-center justify-between px-8 lg:px-20 gap-10">
         {/* Kiri - Teks */}
         <div className="w-full lg:w-1/2">
-          <div className="flex items-center gap-2 mb-2">
+          <motion.div
+            className="flex items-center gap-2 mb-2"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            viewport={{ once: true }}
+          >
             <FaPenNib className="text-[#FD853A]" size={20} />
             <span className="font-semibold text-black">Blogs Post</span>
-          </div>
-          <h2 className="text-3xl sm:text-4xl font-bold">
+          </motion.div>
+          <motion.h2
+            className="text-3xl sm:text-4xl font-bold"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            viewport={{ once: true }}
+          >
             <span className="text-black">Kumpulan</span>{" "}
             <span className="text-[#FD853A]">Blog</span>{" "}
             <span className="text-black">Terbaru</span>
-          </h2>
+          </motion.h2>
         </div>
 
         {/* Kanan - Tombol */}
-        <a href="/projects" className="relative w-[250px] group">
+        <motion.a
+          href="/projects"
+          className="relative w-[250px] group"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.1 }}
+          viewport={{ once: true }}
+        >
           <div className="bg-[#FD853A] h-[42px] w-[250px] rounded-full" />
+
           <div className="absolute top-0 left-0 bg-[#263650] text-white rounded-full h-[42px] w-[180px] flex items-center justify-between pl-6 pr-10 z-10">
             <span className="text-sm md:text-base whitespace-nowrap">
               Lihat Semua Blogs
             </span>
           </div>
+
           <div className="absolute top-1/2 left-[190px] -translate-y-1/2 transform transition-transform duration-300 ease-in-out group-hover:translate-x-2 bg-white w-[38px] h-[38px] rounded-full flex items-center justify-center z-20">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -80,7 +101,7 @@ export default function BlogPreview() {
               />
             </svg>
           </div>
-        </a>
+        </motion.a>
       </div>
 
       {/* Grid Card Section */}

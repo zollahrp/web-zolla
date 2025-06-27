@@ -39,14 +39,24 @@ export default function Skills() {
     <section id="skills" className="bg-white py-20">
       <div className="max-w-screen-xl mx-auto px-8 lg:px-20">
         {/* Title */}
-        <div className="flex items-center gap-2 mb-2">
+        <motion.div className="flex items-center gap-2 mb-2"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            viewport={{ once: true }}
+          >
           <FaTools className="text-[#FD853A]" size={20} />
           <span className="font-semibold text-black">Skills</span>
-        </div>
+        </motion.div>
 
-        <h2 className="text-3xl sm:text-4xl font-bold mb-10">
+        <motion.h2 className="text-3xl sm:text-4xl font-bold mb-10"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            viewport={{ once: true }}
+          >
           <span className="text-[#FD853A]">Keahlian </span> yang Saya Miliki
-        </h2>
+        </motion.h2>
 
         {/* Skills Grid */}
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6">

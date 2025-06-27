@@ -31,15 +31,28 @@ export default function Experience() {
     <section id="experience" className="bg-white py-0">
       <div className="max-w-screen-xl mx-auto px-6 lg:px-20 text-center">
         {/* Title */}
-        <div className="flex justify-center items-center gap-2 mb-2">
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, ease: "easeOut", delay: 0.2 }}
+          viewport={{ once: true }}
+          className="flex justify-center items-center gap-2 mb-2"
+        >
           <MdWork className="text-[#FD853A]" size={20} />
           <h3 className="text-base sm:text-lg font-semibold text-black">
             Experience
           </h3>
-        </div>
-        <h2 className="text-3xl sm:text-4xl font-bold mb-16">
-          <span className="text-[#FD853A]">Pengalaman Kerja</span> Saya
-        </h2>
+        </motion.div>
+        <motion.h2
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, ease: "easeOut", delay: 0.5 }}
+          viewport={{ once: true }}
+          className="text-3xl sm:text-4xl font-bold mb-16"
+        >
+          <span className="text-[#FD853A]">Pengalaman Kerja</span>{" "}
+          <span className="text-[#263650]">Saya</span>
+        </motion.h2>
 
         {/* Timeline */}
         <div className="relative">
