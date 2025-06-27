@@ -2,6 +2,7 @@
 import Image from "next/image";
 import { FiArrowRight } from "react-icons/fi";
 import { FaStar } from "react-icons/fa";
+import { motion } from "framer-motion";
 
 const projects = [
   {
@@ -9,9 +10,16 @@ const projects = [
     desc: "Deskripsi singkat project",
     category: "Website",
     date: "Jun 2025",
-    image: "/img/blog_1.JPG", // samakan persis
+    image: "/img/blog_1.JPG",
   },
-  // tambahkan data lainnya
+    {
+    title: "Judul Project",
+    desc: "Deskripsi singkat project",
+    category: "Website",
+    date: "Jun 2025",
+    image: "/img/blog_1.JPG",
+  },
+  // Tambahkan lebih banyak project di sini...
 ];
 
 export default function Portfolio() {
@@ -31,17 +39,12 @@ export default function Portfolio() {
           </div>
 
           <a href="/projects" className="relative w-[290px] group">
-            {/* Background Orange */}
             <div className="bg-[#FD853A] h-[42px] w-[270px] rounded-full" />
-
-            {/* Button Biru Tua */}
             <div className="absolute top-0 left-0 bg-[#263650] text-white rounded-full h-[42px] w-[200px] flex items-center justify-between pl-6 pr-10 z-10">
               <span className="text-sm md:text-base whitespace-nowrap">
                 Lihat Semua Projects
               </span>
             </div>
-
-            {/* Icon Panah + Bulatan Putih */}
             <div className="absolute top-1/2 left-[210px] -translate-y-1/2 transform transition-transform duration-300 ease-in-out group-hover:translate-x-2 bg-white w-[38px] h-[38px] rounded-full flex items-center justify-center z-20">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -64,8 +67,18 @@ export default function Portfolio() {
         {/* Grid Project */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {projects.map((project, i) => (
-            <div key={i} className="bg-white rounded-2xl p-4 shadow-sm">
-              {/* Gambar (placeholder) */}
+            <motion.div
+              key={i}
+              initial={{ opacity: 0, y: 40, scale: 0.95 }}
+              whileInView={{ opacity: 1, y: 0, scale: 1 }}
+              transition={{
+                duration: 0.6,
+                delay: i * 0.2,
+                ease: "easeOut",
+              }}
+              viewport={{ once: true, amount: 0.3 }}
+              className="bg-white rounded-2xl p-4 shadow-sm"
+            >
               <div className="w-full h-[272px] relative rounded-xl overflow-hidden mb-4">
                 <Image
                   src={project.image}
@@ -75,7 +88,6 @@ export default function Portfolio() {
                 />
               </div>
 
-              {/* Label + Tanggal */}
               <div className="flex items-center justify-between mb-2">
                 <span className="text-sm font-semibold bg-[#FD853A] text-white px-3 py-1 rounded-full">
                   {project.category}
@@ -83,10 +95,9 @@ export default function Portfolio() {
                 <span className="text-sm text-gray-500">{project.date}</span>
               </div>
 
-              {/* Judul */}
               <h3 className="text-lg font-bold text-black">{project.title}</h3>
               <p className="text-sm text-gray-600">{project.desc}</p>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>

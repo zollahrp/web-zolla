@@ -1,6 +1,7 @@
 "use client";
 import Image from "next/image";
 import { FaPenNib } from "react-icons/fa6";
+import { motion } from "framer-motion";
 
 const blogs = [
   {
@@ -57,40 +58,46 @@ export default function BlogPreview() {
 
         {/* Kanan - Tombol */}
         <a href="/projects" className="relative w-[250px] group">
-            {/* Background Orange */}
-            <div className="bg-[#FD853A] h-[42px] w-[250px] rounded-full" />
-
-            {/* Button Biru Tua */}
-            <div className="absolute top-0 left-0 bg-[#263650] text-white rounded-full h-[42px] w-[180px] flex items-center justify-between pl-6 pr-10 z-10">
-              <span className="text-sm md:text-base whitespace-nowrap">
-                Lihat Semua Blogs
-              </span>
-            </div>
-
-            {/* Icon Panah + Bulatan Putih */}
-            <div className="absolute top-1/2 left-[190px] -translate-y-1/2 transform transition-transform duration-300 ease-in-out group-hover:translate-x-2 bg-white w-[38px] h-[38px] rounded-full flex items-center justify-center z-20">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                strokeWidth="2.5"
-                stroke="currentColor"
-                className="w-5 h-5 text-black"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M13.25 4.75L20.25 11.75L13.25 18.75M4 11.75H20.25"
-                />
-              </svg>
-            </div>
-          </a>
+          <div className="bg-[#FD853A] h-[42px] w-[250px] rounded-full" />
+          <div className="absolute top-0 left-0 bg-[#263650] text-white rounded-full h-[42px] w-[180px] flex items-center justify-between pl-6 pr-10 z-10">
+            <span className="text-sm md:text-base whitespace-nowrap">
+              Lihat Semua Blogs
+            </span>
+          </div>
+          <div className="absolute top-1/2 left-[190px] -translate-y-1/2 transform transition-transform duration-300 ease-in-out group-hover:translate-x-2 bg-white w-[38px] h-[38px] rounded-full flex items-center justify-center z-20">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth="2.5"
+              stroke="currentColor"
+              className="w-5 h-5 text-black"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M13.25 4.75L20.25 11.75L13.25 18.75M4 11.75H20.25"
+              />
+            </svg>
+          </div>
+        </a>
       </div>
 
       {/* Grid Card Section */}
       <div className="max-w-screen-xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 px-8 lg:px-20 mt-10">
         {blogs.map((blog, i) => (
-          <div key={i} className="bg-white rounded-xl shadow-sm overflow-hidden">
+          <motion.div
+            key={i}
+            initial={{ opacity: 0, y: 40, scale: 0.95 }}
+            whileInView={{ opacity: 1, y: 0, scale: 1 }}
+            transition={{
+              duration: 0.6,
+              delay: i * 0.2,
+              ease: "easeOut",
+            }}
+            viewport={{ once: true, amount: 0.3 }}
+            className="bg-white rounded-xl shadow-sm overflow-hidden"
+          >
             <img
               src={blog.image}
               alt={blog.title}
@@ -111,7 +118,7 @@ export default function BlogPreview() {
                 Lihat postingan
               </p>
             </div>
-          </div>
+          </motion.div>
         ))}
       </div>
     </section>

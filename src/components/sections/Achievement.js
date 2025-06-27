@@ -1,5 +1,6 @@
 "use client";
 import { FaAward } from "react-icons/fa";
+import { motion } from "framer-motion";
 
 const achievements = {
   kompetisi: [
@@ -75,8 +76,18 @@ export default function Achievement() {
           {/* Kolom Kiri - Kompetisi */}
           <div className="divide-y-2 divide-black">
             {achievements.kompetisi.map((item, i) => (
-              <div key={i} className="relative pl-12 border-l-2 border-gray-300">
-                {/* Dot */}
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 40, scale: 0.95 }}
+                whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                transition={{
+                  duration: 0.5,
+                  delay: i * 0.15,
+                  ease: "easeOut",
+                }}
+                viewport={{ once: true, amount: 0.3 }}
+                className="relative pl-12 border-l-2 border-gray-300"
+              >
                 <div className="absolute -left-[24px] top-1/2 -translate-y-1/2">
                   <img
                     src={item.logo}
@@ -85,24 +96,30 @@ export default function Achievement() {
                   />
                 </div>
 
-                {/* Info */}
                 <div className="py-6">
                   <h3 className="font-bold text-black">{item.title}</h3>
                   <p className="italic text-black/70">{item.event}</p>
                   <p className="text-sm text-black/50 mt-1">{item.date}</p>
                 </div>
-              </div>
+              </motion.div>
             ))}
           </div>
 
           {/* Kolom Kanan - Organisasi */}
           <div className="divide-y-2 divide-black">
             {achievements.organisasi.map((item, i) => (
-              <div
+              <motion.div
                 key={i}
+                initial={{ opacity: 0, y: 40, scale: 0.95 }}
+                whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                transition={{
+                  duration: 0.5,
+                  delay: i * 0.15,
+                  ease: "easeOut",
+                }}
+                viewport={{ once: true, amount: 0.3 }}
                 className="relative pr-12 border-r-2 border-gray-300 text-right"
               >
-                {/* Dot */}
                 <div className="absolute -right-[24px] top-1/2 -translate-y-1/2">
                   <img
                     src={item.logo}
@@ -111,13 +128,12 @@ export default function Achievement() {
                   />
                 </div>
 
-                {/* Info */}
                 <div className="py-6">
                   <h3 className="font-bold text-black">{item.title}</h3>
                   <p className="italic text-black/70">{item.event}</p>
                   <p className="text-sm text-black/50 mt-1">{item.date}</p>
                 </div>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>
