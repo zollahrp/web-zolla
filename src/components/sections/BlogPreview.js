@@ -70,7 +70,7 @@ export default function BlogPreview() {
 
         {/* Kanan - Tombol */}
         <motion.a
-          href="/projects"
+          href="/blog"
           className="relative w-[250px] group"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
