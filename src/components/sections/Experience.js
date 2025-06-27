@@ -1,5 +1,5 @@
 "use client";
-
+import { motion } from "framer-motion";
 import { MdWork } from "react-icons/md";
 
 export default function Experience() {
@@ -44,12 +44,21 @@ export default function Experience() {
         {/* Timeline */}
         <div className="relative">
           {/* Garis Vertikal Global */}
-          <div className="absolute top-0 bottom-0 left-1/2 -translate-x-1/2 w-px border-l-2 border-dashed border-[#263650] z-0" />
+          <motion.div
+            initial={{ height: 0 }}
+            whileInView={{ height: "100%" }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            className="absolute top-0 bottom-0 left-1/2 -translate-x-1/2 w-px border-l-2 border-dashed border-[#263650] z-0"
+          />
 
           {data.map((item, i) => (
-            <div
+            <motion.div
               key={i}
               className="grid grid-cols-[2fr_40px_2fr] items-center mb-14 relative"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: i * 0.2, ease: "easeOut" }}
+              viewport={{ once: true }}
             >
               {/* Left Side */}
               <div className="text-right pr-10">
@@ -81,7 +90,7 @@ export default function Experience() {
                   {item.desc}
                 </p>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>

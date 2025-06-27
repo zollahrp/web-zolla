@@ -2,43 +2,92 @@
 import Image from "next/image";
 import HelloBox from "../HelloBox";
 import Services from "./Services";
+import { motion } from "framer-motion";
+import { useEffect, useRef } from "react";
+import { animate, stagger } from "motion";
+import { splitText } from "motion-plus";
 import { FiDownload } from "react-icons/fi";
 
 export default function Home() {
+  const headlineRef = useRef(null);
+
+  useEffect(() => {
+    document.fonts.ready.then(() => {
+      if (!headlineRef.current) return;
+      const { words } = splitText(headlineRef.current);
+      animate(
+        words,
+        { opacity: [0, 1], y: [10, 0] },
+        {
+          type: "spring",
+          duration: 1.6,
+          delay: stagger(0.05),
+        }
+      );
+    });
+  }, []);
+
   return (
     <section id="home" className="relative w-full overflow-hidden mt-16">
       {/* === Hero Section === */}
       <div className="max-w-screen-xl mx-auto flex flex-col-reverse lg:flex-row items-center justify-between pt-20 px-8 lg:px-20 gap-10">
         {/* Left Text */}
-        <div className="lg:w-1/2 w-full space-y-6 pb-10">
+        <motion.div
+          className="lg:w-1/2 w-full space-y-6 pb-10"
+          initial="hidden"
+          animate="visible"
+          variants={{
+            hidden: {},
+            visible: {
+              transition: {
+                staggerChildren: 0.3, // Delay antar elemen
+              },
+            },
+          }}
+        >
+          {/* HelloBox tetap animasi sendiri */}
           <HelloBox />
 
-          <h1 className="text-4xl sm:text-5xl lg:text-5xl font-bold text-[#263650] leading-tight">
+          {/* Judul*/}
+          <motion.h1
+            className="text-4xl sm:text-5xl lg:text-5xl font-bold text-[#263650] leading-tight"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 1.6 }}
+          >
             Saya <span className="text-[#FD853A]">Zolla Perdana</span>,<br />
             Software Engineering dan Penulis.
-          </h1>
+          </motion.h1>
 
-          <p className="text-gray-600 text-base leading-relaxed max-w-xl">
-            Mahasiswa Sarjana Terapan Teknologi Rekayasa Perangkat Lunak di Sekolah Vokasi IPB University. Aktif mengikuti berbagai kompetisi dan menjelajahi tantangan di bidang teknologi, lingkungan, dan pendidikan melalui pendekatan yang kreatif dan inovatif.
-          </p>
+          {/* Paragraph */}
+          <motion.p
+            className="text-gray-600 text-base leading-relaxed max-w-xl"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 1.9 }}
+          >
+            Mahasiswa Sarjana Terapan Teknologi Rekayasa Perangkat Lunak di
+            Sekolah Vokasi IPB University. Aktif mengikuti berbagai kompetisi
+            dan menjelajahi tantangan di bidang teknologi, lingkungan, dan
+            pendidikan melalui pendekatan yang kreatif dan inovatif.
+          </motion.p>
 
-          <a
+          {/* BUTTON */}
+          <motion.a
             href="https://drive.google.com/drive/folders/1EhEvBS-iIfQeeEwjsmT3CbLtlw-eXeQr"
             target="_blank"
             rel="noopener noreferrer"
             className="relative w-[300px] block group"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 2.3 }}
           >
-            {/* Background Orange */}
             <div className="bg-[#FD853A] h-[42px] w-[230px] rounded-full"></div>
-
-            {/* Button Biru Tua */}
             <div className="absolute top-0 left-0 bg-[#263650] text-white rounded-full h-[42px] w-[160px] flex items-center justify-between pl-6 pr-10 z-10 border border-[#FD853A]">
               <span className="text-sm md:text-base whitespace-nowrap">
                 Lihat CV Saya
               </span>
             </div>
-
-            {/* Icon Panah + Bulatan Putih */}
             <div className="absolute top-1/2 left-[170px] -translate-y-1/2 transform transition-transform duration-300 ease-in-out group-hover:translate-x-2 bg-white w-[38px] h-[38px] rounded-full flex items-center justify-center z-20">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -55,29 +104,36 @@ export default function Home() {
                 />
               </svg>
             </div>
-          </a>
-        </div>
+          </motion.a>
+        </motion.div>
 
         {/* Right Image */}
-        <div className="relative w-full lg:w-1/2 flex justify-center items-end lg:items-center mt-10">
+        <motion.div
+          className="relative w-full lg:w-1/2 flex justify-center items-end lg:items-center mt-10"
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 2.3 }}
+        >
           <div className="absolute -z-10 w-[300px] h-[300px] lg:w-[400px] lg:h-[400px]" />
           <Image
             src="/img/gambar_home.png"
             alt="Zolla Perdana"
             width={450}
             height={600}
-            // className="object-cover h-[700px] !h-[700px]"
             className="relative z-10 object-cover"
             priority
           />
-        </div>
+        </motion.div>
       </div>
 
       {/* === Marquee Section === */}
-      <div className="relative w-full overflow-visible">
-        {/* Miring */}
+      <motion.div
+        className="relative w-full overflow-visible"
+        initial={{ opacity: 0, y: 10 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, delay: 2.7 }}
+      >
         <div className="bg-[#263650] -rotate-[2.1deg] origin-bottom h-[60px] w-[120%] absolute -left-10 -translate-y-2 z-10"></div>
-        {/* Lurus */}
         <div className="bg-[#FD853A] py-4 relative z-10 overflow-hidden whitespace-nowrap">
           <div className="marquee-track">
             <span className="mx-8 text-white font-medium text-lg tracking-widest">
@@ -152,11 +208,11 @@ export default function Home() {
               Research
             </span>
             <span className="mx-8 text-white font-medium text-lg tracking-widest">
-              Problem Solving
+              Problem Solving{" "}
             </span>
           </div>
         </div>
-      </div>
+      </motion.div>
 
       {/* === Services Section === */}
       <Services />
