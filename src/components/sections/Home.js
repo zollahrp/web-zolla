@@ -32,7 +32,7 @@ export default function Home() {
             <div className="bg-[#FD853A] h-[42px] w-[230px] rounded-full"></div>
 
             {/* Button Biru Tua */}
-            <div className="absolute top-0 left-0 bg-[#263650] text-white rounded-full h-[42px] w-[160px] flex items-center justify-between pl-6 pr-10 z-10">
+            <div className="absolute top-0 left-0 bg-[#263650] text-white rounded-full h-[42px] w-[160px] flex items-center justify-between pl-6 pr-10 z-10 border border-[#FD853A]">
               <span className="text-sm md:text-base whitespace-nowrap">
                 Lihat CV Saya
               </span>
