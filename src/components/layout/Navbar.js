@@ -1,4 +1,5 @@
 "use client";
+import { usePathname } from "next/navigation"; // <--- Tambahin ini
 
 import {
   Navbar as RootNavbar,
@@ -26,6 +27,13 @@ const navLinks = [
 ];
 
 export default function Navbar() {
+  const pathname = usePathname(); // <--- Tambahin ini
+
+  // Kalau lagi di halaman dashboard, jangan render navbar
+  if (pathname.startsWith("/zaga")) return null;
+
+
+
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeHash, setActiveHash] = useState("#home");
 
