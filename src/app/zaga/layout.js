@@ -2,6 +2,8 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "@/app/globals.css";
 import Sidebar from "@/components/dashboard/layout/sidebar";
+// Ini BENAR (huruf besar, sesuai nama file)
+import Header from "@/components/dashboard/layout/header";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -21,10 +23,21 @@ export const metadata = {
 export default function ZagaLayout({ children }) {
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+      <body
+        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+      >
         <div className="flex min-h-screen">
+          {/* Sidebar */}
           <Sidebar />
-          <main className="flex-1 p-6 bg-gray-50">{children}</main>
+
+          {/* Konten Utama */}
+          <div className="flex flex-col flex-1">
+            {/* Header di atas konten, sejajar dengan Sidebar */}
+            <Header />
+
+            {/* Konten Halaman */}
+            <main className="flex-1 p-6 bg-gray-50">{children}</main>
+          </div>
         </div>
       </body>
     </html>

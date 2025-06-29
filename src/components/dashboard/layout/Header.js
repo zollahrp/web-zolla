@@ -6,9 +6,9 @@ import { FiMenu, FiBell } from "react-icons/fi";
 import { FaGithub } from "react-icons/fa";
 import Image from "next/image";
 
-export default function Header({ onToggleSidebar }) {
+export default function header({ onToggleSidebar }) {
   return (
-    <header className="w-full h-16 bg-white shadow flex items-center justify-between px-4 lg:px-6 z-50 mt-100">
+    <header className="w-full h-16 bg-white shadow flex items-center justify-between px-4 lg:px-6 z-50">
       {/* Kiri: Toggle + Search */}
       <div className="flex items-center gap-4">
         <button

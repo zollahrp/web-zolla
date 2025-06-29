@@ -43,3 +43,17 @@ body {
   100% { transform: translateX(-50%); }
 }
 
+/* Ini untuk Experience Dashboard */
+.input {
+  @apply w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring focus:ring-orange-300;
+}
+
+.btn {
+  @apply px-4 py-2 rounded font-medium;
+}
+.btn-primary {
+  @apply bg-[#FD853A] text-white hover:bg-[#e56e20];
+}
+.btn-secondary {
+  @apply bg-gray-200 hover:bg-gray-300 text-black;
+}
