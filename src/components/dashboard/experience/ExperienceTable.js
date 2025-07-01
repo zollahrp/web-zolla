@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import Swal from "sweetalert2";
+import { FiEdit, FiTrash2 } from "react-icons/fi";
 
 export default function ExperienceTable({ data, onDelete, onEdit }) {
   const [currentPage, setCurrentPage] = useState(1);
@@ -30,7 +31,6 @@ export default function ExperienceTable({ data, onDelete, onEdit }) {
           showConfirmButton: false,
         });
 
-        // Reset page jika data dihapus di halaman terakhir dan jadi kosong
         if (paginatedData.length === 1 && currentPage > 1) {
           setCurrentPage((prev) => prev - 1);
         }
@@ -47,7 +47,7 @@ export default function ExperienceTable({ data, onDelete, onEdit }) {
             <th className="px-6 py-4 font-semibold text-gray-700">Periode</th>
             <th className="px-6 py-4 font-semibold text-gray-700">Posisi</th>
             <th className="px-6 py-4 font-semibold text-gray-700">Deskripsi</th>
-            <th className="px-6 py-4 font-semibold text-gray-700">Aksi</th>
+            <th className="px-6 py-4 font-semibold text-gray-700 text-center">Aksi</th>
           </tr>
         </thead>
         <tbody className="divide-y divide-gray-100 text-gray-800">
@@ -64,19 +64,23 @@ export default function ExperienceTable({ data, onDelete, onEdit }) {
                 <td className="px-6 py-4">{item.period}</td>
                 <td className="px-6 py-4">{item.position}</td>
                 <td className="px-6 py-4">{item.desc}</td>
-                <td className="px-6 py-4 flex items-center gap-2">
-                  <button
-                    onClick={() => onEdit(item)}
-                    className="text-white bg-blue-500 hover:bg-blue-600 px-3 py-1 rounded text-xs"
-                  >
-                    Edit
-                  </button>
-                  <button
-                    onClick={() => handleDelete(item.id)}
-                    className="text-white bg-red-500 hover:bg-red-600 px-3 py-1 rounded text-xs"
-                  >
-                    Hapus
-                  </button>
+                <td className="px-6 py-4 text-center">
+                  <div className="flex justify-center items-center gap-3">
+                    <button
+                      onClick={() => onEdit(item)}
+                      className="text-blue-600 hover:text-blue-800"
+                      title="Edit"
+                    >
+                      <FiEdit />
+                    </button>
+                    <button
+                      onClick={() => handleDelete(item.id)}
+                      className="text-red-600 hover:text-red-800"
+                      title="Hapus"
+                    >
+                      <FiTrash2 />
+                    </button>
+                  </div>
                 </td>
               </tr>
             ))
