@@ -2,7 +2,6 @@
 import { useState } from "react";
 import BlogForm from "@/components/dashboard/blog/BlogForm";
 import BlogTable from "@/components/dashboard/blog/BlogTable";
-import BlogModal from "@/components/dashboard/blog/BlogModal";
 
 export default function BlogDashboardPage() {
   const [blogs, setBlogs] = useState([]);
