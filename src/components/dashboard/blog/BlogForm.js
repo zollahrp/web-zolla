@@ -21,7 +21,10 @@ export default function BlogForm({ onSubmit }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const slug = title.toLowerCase().replace(/\s+/g, "-");
+    const slug = title
+      .toLowerCase()
+      .replace(/[^\w\s-]/g, "") // hapus karakter aneh
+      .replace(/\s+/g, "-"); // ganti spasi ke strip
 
     const { data, error } = await supabase
       .from("blogs")

@@ -49,14 +49,16 @@ export default function BlogDashboardPage() {
         title: updatedBlog.title,
         category: updatedBlog.category,
         content: updatedBlog.content,
+        image: updatedBlog.image,
+        excerpt: updatedBlog.excerpt,
+        slug: updatedBlog.title.toLowerCase().replace(/\s+/g, "-"),
       })
-      .eq("id", updatedBlog.id);
+      .eq("id", updatedBlog.id)
+      .select(); // ⬅️ ini penting buat dapetin data[0] setelah update
 
     if (error) return alert("Gagal update: " + error.message);
 
-    setBlogs(
-      blogs.map((b) => (b.id === updatedBlog.id ? data[0] : b))
-    );
+    setBlogs(blogs.map((b) => (b.id === updatedBlog.id ? data[0] : b)));
     setShowModal(false);
     setEditingBlog(null);
   };
