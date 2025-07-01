@@ -26,11 +26,11 @@ const navItems = [
   {
     title: "Website Manager",
     links: [
-      {
-        name: "Customize Web",
-        href: "/zaga/customize",
-        icon: <FiSettings size={18} />,
-      },
+      // {
+      //   name: "Customize Web",
+      //   href: "/zaga/customize",
+      //   icon: <FiSettings size={18} />,
+      // },
       {
         name: "Experience",
         href: "/zaga/experience",
