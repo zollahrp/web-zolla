@@ -1,22 +1,40 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { supabase } from "@/lib/supabaseClient";
 import BlogForm from "@/components/dashboard/blog/BlogForm";
 import BlogTable from "@/components/dashboard/blog/BlogTable";
+import BlogModal from "@/components/dashboard/blog/BlogModal"; // pastikan ada ini
 
 export default function BlogDashboardPage() {
   const [blogs, setBlogs] = useState([]);
   const [editingBlog, setEditingBlog] = useState(null);
   const [showModal, setShowModal] = useState(false);
 
-  const handleAddBlog = (newBlog) => {
-    setBlogs([...blogs, { ...newBlog, id: Date.now() }]);
+  // ⬇ Fetch from Supabase
+  useEffect(() => {
+    async function fetchBlogs() {
+      const { data, error } = await supabase
+        .from("blogs")
+        .select("*")
+        .order("created_at", { ascending: false });
+      if (error) console.error("Error fetch:", error);
+      else setBlogs(data);
+    }
+    fetchBlogs();
+  }, []);
+
+  const handleAddBlog = async (newBlog) => {
+    const { data, error } = await supabase.from("blogs").insert([newBlog]);
+    if (error) return alert("Gagal simpan: " + error.message);
+    setBlogs([data[0], ...blogs]);
   };
 
-  const handleDeleteBlog = (blog) => {
+  const handleDeleteBlog = async (blog) => {
     const confirm = window.confirm("Yakin mau hapus?");
-    if (confirm) {
-      setBlogs(blogs.filter((b) => b.id !== blog.id));
-    }
+    if (!confirm) return;
+    const { error } = await supabase.from("blogs").delete().eq("id", blog.id);
+    if (error) return alert("Gagal hapus: " + error.message);
+    setBlogs(blogs.filter((b) => b.id !== blog.id));
   };
 
   const handleEditBlog = (blog) => {
@@ -24,9 +42,20 @@ export default function BlogDashboardPage() {
     setShowModal(true);
   };
 
-  const handleUpdateBlog = (updatedBlog) => {
+  const handleUpdateBlog = async (updatedBlog) => {
+    const { data, error } = await supabase
+      .from("blogs")
+      .update({
+        title: updatedBlog.title,
+        category: updatedBlog.category,
+        content: updatedBlog.content,
+      })
+      .eq("id", updatedBlog.id);
+
+    if (error) return alert("Gagal update: " + error.message);
+
     setBlogs(
-      blogs.map((b) => (b.id === updatedBlog.id ? updatedBlog : b))
+      blogs.map((b) => (b.id === updatedBlog.id ? data[0] : b))
     );
     setShowModal(false);
     setEditingBlog(null);

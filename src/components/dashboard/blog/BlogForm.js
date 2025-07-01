@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import dynamic from "next/dynamic";
+import { supabase } from "@/lib/supabaseClient";
 
 // Biar TinyMCE aman dari hydration error (cuma jalan di client)
 const Editor = dynamic(
@@ -14,12 +15,49 @@ export default function BlogForm({ onSubmit }) {
   const [category, setCategory] = useState("");
   const [content, setContent] = useState("");
 
-  const handleSubmit = (e) => {
+  const [image, setImage] = useState("");
+  const [excerpt, setExcerpt] = useState("");
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    onSubmit({ title, category, content, id: Date.now() });
+
+    const slug = title.toLowerCase().replace(/\s+/g, "-");
+
+    const { data, error } = await supabase
+      .from("blogs")
+      .insert([{ title, slug, category, content, image, excerpt }]);
+
+    if (error) return alert("Gagal simpan: " + error.message);
+    alert("Berhasil disimpan!");
     setTitle("");
     setCategory("");
     setContent("");
+    setImage("");
+    setExcerpt("");
+  };
+
+  const handleImageUpload = async (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
+
+    const fileExt = file.name.split(".").pop();
+    const fileName = `${Date.now()}.${fileExt}`;
+    const filePath = `blog/${fileName}`;
+
+    let { error } = await supabase.storage
+      .from("blog-images")
+      .upload(filePath, file);
+
+    if (error) {
+      alert("Gagal upload gambar: " + error.message);
+      return;
+    }
+
+    const { data } = supabase.storage
+      .from("blog-images")
+      .getPublicUrl(filePath);
+
+    setImage(data.publicUrl); // langsung masukin ke form
   };
 
   return (
@@ -41,6 +79,25 @@ export default function BlogForm({ onSubmit }) {
         placeholder="Kategori"
         value={category}
         onChange={(e) => setCategory(e.target.value)}
+        className="w-full p-2 border rounded"
+      />
+      <input
+        type="file"
+        placeholder="URL Gambar Header"
+        onChange={handleImageUpload}
+        className="w-full p-2 border rounded"
+      />
+      {image && (
+        <img
+          src={image}
+          alt="Preview"
+          className="w-32 h-32 object-cover rounded border"
+        />
+      )}
+      <textarea
+        placeholder="Ringkasan blog (excerpt)"
+        value={excerpt}
+        onChange={(e) => setExcerpt(e.target.value)}
         className="w-full p-2 border rounded"
       />
 

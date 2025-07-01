@@ -1,46 +1,37 @@
 "use client";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
-
-const blogs = [
-  {
-    title: "Integer Maecenas Eget Viverra",
-    category: "Website",
-    date: "6 Juni 2025",
-    excerpt:
-      "Aenean eleifend ante maecenas pulvinar montes lorem et pede dis dolor pretium donec dictum. Vici consequat justo enim. Venenatis eget adipiscing luctus lorem.",
-    image: "/img/blog_1.jpg",
-  },
-  {
-    title: "Aenean eleifend ante maecenas",
-    category: "Website",
-    date: "6 Juni 2025",
-    excerpt:
-      "Aenean eleifend ante maecenas pulvinar montes lorem et pede dis dolor pretium donec dictum. Vici consequat justo enim. Venenatis eget adipiscing luctus lorem.",
-    image: "/img/blog_1.jpg",
-  },
-  {
-    title: "Integer Maecenas Eget Viverra",
-    category: "Website",
-    date: "6 Juni 2025",
-    excerpt:
-      "Aenean eleifend ante maecenas pulvinar montes lorem et pede dis dolor pretium donec dictum. Vici consequat justo enim. Venenatis eget adipiscing luctus lorem.",
-    image: "/img/blog_1.jpg",
-  },
-];
+import { supabase } from "@/lib/supabaseClient";
 
 export default function BlogList({ sort }) {
+  const [blogs, setBlogs] = useState([]);
+
+  useEffect(() => {
+    const fetchBlogs = async () => {
+      const { data, error } = await supabase
+        .from("blogs")
+        .select("*")
+        .order("created_at", { ascending: false });
+
+      if (error) console.error("Gagal ambil data:", error.message);
+      else setBlogs(data);
+    };
+
+    fetchBlogs();
+  }, []);
+
   const sortedBlogs = [...blogs].sort((a, b) => {
     return sort === "newest"
-      ? new Date(b.date) - new Date(a.date)
-      : new Date(a.date) - new Date(b.date);
+      ? new Date(b.created_at) - new Date(a.created_at)
+      : new Date(a.created_at) - new Date(b.created_at);
   });
 
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 py-10">
       {sortedBlogs.map((blog, i) => (
         <motion.div
-          key={i}
+          key={blog.id || i}
           initial={{ opacity: 0, y: 40, scale: 0.95 }}
           whileInView={{ opacity: 1, y: 0, scale: 1 }}
           transition={{
@@ -64,7 +55,11 @@ export default function BlogList({ sort }) {
                   {blog.category}
                 </span>
                 <span className="bg-[#FD853A] text-white px-3 py-1 rounded-full">
-                  {blog.date}
+                  {new Date(blog.created_at).toLocaleDateString("id-ID", {
+                    day: "numeric",
+                    month: "long",
+                    year: "numeric",
+                  })}
                 </span>
               </div>
               <h3 className="text-xl font-bold text-black">{blog.title}</h3>
