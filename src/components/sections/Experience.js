@@ -1,31 +1,27 @@
 "use client";
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { MdWork } from "react-icons/md";
 
 export default function Experience() {
-  const data = [
-    {
-      company: "Puna Indonesia",
-      period: "April 2025 - Sekarang",
-      position: "Head of Creative and Innovation",
-      desc: "Bertanggung jawab dalam mengelola media sosial, content creator, serta ide inovasi.",
-      dotColor: "#FD853A",
-    },
-    {
-      company: "MicroIT IPB University",
-      period: "Sep 2023 - Juli 2024",
-      position: "Web Master",
-      desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis lacus nunc, posuere in justo vulputate, bibendum sodales.",
-      dotColor: "#263650",
-    },
-    {
-      company: "Bem SV IPB",
-      period: "Sep 2023 - Des 2024",
-      position: "Ketua",
-      desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis lacus nunc, posuere in justo vulputate, bibendum sodales.",
-      dotColor: "#FD853A",
-    },
-  ];
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    const fetchExperience = async () => {
+      const res = await fetch("/api/experiences");
+      const result = await res.json();
+
+      // kasih warna default atau acak
+      const colored = result.map((item, i) => ({
+        ...item,
+        dotColor: item.dotColor || (i % 2 === 0 ? "#FD853A" : "#263650"),
+      }));
+
+      setData(colored);
+    };
+
+    fetchExperience();
+  }, []);
 
   return (
     <section id="experience" className="bg-white py-0">
@@ -56,7 +52,6 @@ export default function Experience() {
 
         {/* Timeline */}
         <div className="relative">
-          {/* Garis Vertikal Global */}
           <motion.div
             initial={{ height: 0 }}
             whileInView={{ height: "100%" }}
@@ -85,11 +80,10 @@ export default function Experience() {
 
               {/* Center Dot */}
               <div className="relative z-10 flex flex-col items-center">
-                {/* Dot dengan Lingkaran Putus-Putus */}
                 <div className="w-10 h-10 rounded-full border-2 border-dashed border-[#263650] flex items-center justify-center bg-white">
                   <div
                     className="w-6 h-6 rounded-full"
-                    style={{ backgroundColor: item.dotColor }}
+                    style={{ backgroundColor: item.dotColor || "#FD853A" }}
                   />
                 </div>
               </div>

@@ -1,5 +1,6 @@
 "use client";
-import { useState } from "react";
+
+import { useState, useEffect } from "react";
 import ExperienceTable from "@/components/dashboard/experience/ExperienceTable";
 import ExperienceModal from "@/components/dashboard/experience/ExperienceModal";
 
@@ -24,6 +25,16 @@ export default function ExperiencePage() {
   const deleteExperience = (id) => {
     setExperiences((prev) => prev.filter((exp) => exp.id !== id));
   };
+
+  useEffect(() => {
+    const fetchExperiences = async () => {
+      const res = await fetch("/api/experiences");
+      const data = await res.json();
+      setExperiences(data);
+    };
+
+    fetchExperiences();
+  }, []);
 
   return (
     <div className="p-6">

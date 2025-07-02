@@ -25,23 +25,40 @@ export default function ExperienceModal({
     setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // 1. submit ke parent
-    onSubmit({ ...formData, id: initialData?.id || Date.now() });
+    try {
+      const method = initialData ? "PUT" : "POST";
 
-    // 2. show alert
-    Swal.fire({
-      icon: "success",
-      title: initialData ? "Data Diperbarui" : "Data Ditambahkan",
-      text: "Pengalaman kerja berhasil disimpan.",
-      timer: 1500,
-      showConfirmButton: false,
-    });
+      const res = await fetch("/api/experiences", {
+        method,
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(
+          initialData ? { ...formData, id: initialData.id } : formData
+        ),
+      });
 
-    // 3. close modal
-    onClose();
+      const result = await res.json();
+      if (!res.ok) {
+        Swal.fire("Gagal", result.error || "Terjadi kesalahan", "error");
+        return;
+      }
+
+      onSubmit(result);
+      onClose();
+
+      Swal.fire({
+        icon: "success",
+        title: initialData ? "Data Diperbarui" : "Data Ditambahkan",
+        text: "Pengalaman kerja berhasil disimpan.",
+        timer: 1500,
+        showConfirmButton: false,
+      });
+    } catch (err) {
+      console.error(err);
+      Swal.fire("Error", "Terjadi kesalahan", "error");
+    }
   };
 
   if (!isOpen) return null;
