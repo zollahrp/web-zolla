@@ -5,6 +5,15 @@ import { FiEdit, FiTrash2, FiPlus } from "react-icons/fi";
 import PortfolioModal from "./PortfolioModal";
 import Pagination from "../shared/Pagination";
 import Swal from "sweetalert2";
+import {
+  FaReact,
+  FaFigma,
+  FaHtml5,
+  FaCss3Alt,
+  FaJsSquare,
+  FaNode,
+} from "react-icons/fa";
+import { SiNextdotjs, SiTailwindcss } from "react-icons/si";
 
 export default function PortfolioTable() {
   const [projects, setProjects] = useState([]);
@@ -31,6 +40,24 @@ export default function PortfolioTable() {
       console.error("Gagal ambil data:", err);
     }
   };
+
+  const iconMap = {
+    react: <FaReact className="text-[#61DBFB]" size={20} />,
+    figma: <FaFigma className="text-[#A259FF]" size={20} />,
+    html: <FaHtml5 className="text-[#e34c26]" size={20} />,
+    css: <FaCss3Alt className="text-[#264de4]" size={20} />,
+    js: <FaJsSquare className="text-[#f7df1e]" size={20} />,
+    next: <SiNextdotjs className="text-black" size={20} />,
+    node: <FaNode className="text-[#3C873A]" size={20} />,
+    tailwind: <SiTailwindcss className="text-[#38B2AC]" size={20} />,
+  };
+
+  const getIcon = (tech) =>
+    iconMap[tech.toLowerCase()] || (
+      <span className="text-sm bg-white/70 px-2 rounded-full">
+        {tech.toUpperCase()}
+      </span>
+    );
 
   useEffect(() => {
     fetchProjects();
@@ -100,6 +127,7 @@ export default function PortfolioTable() {
               <th className="p-4 font-semibold text-gray-700">Deskripsi</th>
               <th className="p-4 font-semibold text-gray-700">Kategori</th>
               <th className="p-4 font-semibold text-gray-700">Teknologi</th>
+              <th className="p-4 font-semibold text-gray-700">Link</th>
               <th className="p-4 font-semibold text-gray-700">Tanggal</th>
               <th className="p-4 font-semibold text-gray-700">Aksi</th>
             </tr>
@@ -123,19 +151,40 @@ export default function PortfolioTable() {
                 </td>
                 <td className="p-4">{item.title}</td>
                 <td className="p-4">{item.desc}</td>
-                <td className="p-4">{item.category}</td>
+                <td className="p-4">
+                  <div className="flex flex-wrap gap-1">
+                    {item.category?.map((cat, i) => (
+                      <span
+                        key={i}
+                        className="bg-gray-200 text-gray-700 text-xs px-2 py-1 rounded-full"
+                      >
+                        {cat}
+                      </span>
+                    ))}
+                  </div>
+                </td>
                 <td className="p-4">
                   <div className="flex gap-1 items-center flex-wrap">
                     {item.tech?.map((t) => (
-                      <img
-                        key={t}
-                        src={`/icons/${t}.svg`}
-                        alt={t}
-                        className="w-5 h-5"
-                        title={t.toUpperCase()}
-                      />
+                      <span key={t} title={t.toUpperCase()}>
+                        {getIcon(t)}
+                      </span>
                     ))}
                   </div>
+                </td>
+                <td className="p-4">
+                  {item.link ? (
+                    <a
+                      href={item.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-blue-500 hover:underline"
+                    >
+                      Kunjungi
+                    </a>
+                  ) : (
+                    "-"
+                  )}
                 </td>
                 <td className="p-4">{item.date}</td>
                 <td className="p-4 flex gap-2">

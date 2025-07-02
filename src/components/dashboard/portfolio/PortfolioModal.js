@@ -16,16 +16,18 @@ export default function PortfolioModal({
   const [form, setForm] = useState({
     title: "",
     desc: "",
-    category: "",
+    category: [],
     date: "",
     image: [],
     tech: [],
+    link: "",
   });
 
   const [allCategories, setAllCategories] = useState([
     "Website",
     "Mobile App",
-    "Design",
+    "UI/UX",
+    "Tulisan",
   ]);
   const [newCategory, setNewCategory] = useState("");
 
@@ -65,16 +67,18 @@ export default function PortfolioModal({
           date: initialData.date || "",
           image: Array.isArray(initialData.image) ? initialData.image : [],
           tech: Array.isArray(initialData.tech) ? initialData.tech : [],
-          id: initialData.id, // perlu untuk update
+          id: initialData.id, 
+          link: initialData.link || "",
         });
       } else {
         setForm({
           title: "",
           desc: "",
-          category: "",
+          category: [],
           date: "",
           image: [],
           tech: [],
+          link: "",
         });
       }
     }
@@ -170,12 +174,11 @@ export default function PortfolioModal({
       date: form.date || "",
       tech: Array.isArray(form.tech) ? form.tech : [],
       image: [...oldImages, ...uploadedUrls],
+      link: form.link || "",
     };
 
     try {
-      const endpoint = form.id
-        ? `/api/portfolio/${form.id}`
-        : "/api/portfolio";
+      const endpoint = form.id ? `/api/portfolio/${form.id}` : "/api/portfolio";
       const method = form.id ? "PUT" : "POST";
 
       const res = await fetch(endpoint, {
@@ -251,19 +254,27 @@ export default function PortfolioModal({
           {/* Kategori */}
           <div className="space-y-2">
             <label className="block font-medium text-sm">Kategori</label>
-            <select
-              name="category"
-              value={form.category}
-              onChange={handleChange}
-              className="input w-full"
-            >
-              <option value="">Pilih Kategori</option>
+            <div className="flex flex-wrap gap-2">
               {allCategories.map((cat) => (
-                <option key={cat} value={cat}>
-                  {cat}
-                </option>
+                <label key={cat} className="flex items-center gap-1">
+                  <input
+                    type="checkbox"
+                    value={cat}
+                    checked={form.category.includes(cat)}
+                    onChange={(e) => {
+                      const checked = e.target.checked;
+                      setForm((prev) => ({
+                        ...prev,
+                        category: checked
+                          ? [...prev.category, cat]
+                          : prev.category.filter((c) => c !== cat),
+                      }));
+                    }}
+                  />
+                  <span className="text-sm">{cat}</span>
+                </label>
               ))}
-            </select>
+            </div>
             <div className="flex gap-2 mt-1">
               <input
                 type="text"
@@ -302,6 +313,14 @@ export default function PortfolioModal({
               ))}
             </div>
           </div>
+
+          <input
+            name="link"
+            value={form.link || ""}
+            onChange={handleChange}
+            placeholder="Tautan proyek (optional)"
+            className="input w-full"
+          />
 
           {/* Upload Gambar */}
           <div>

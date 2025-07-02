@@ -148,14 +148,40 @@
 
 import Image from "next/image";
 import { useEffect, useState } from "react";
-import { FaReact, FaFigma, FaHtml5 } from "react-icons/fa";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
 import { useRouter } from "next/navigation";
+import {
+  FaReact,
+  FaFigma,
+  FaHtml5,
+  FaCss3Alt,
+  FaJsSquare,
+  FaNode,
+} from "react-icons/fa";
+import { SiNextdotjs, SiTailwindcss } from "react-icons/si";
 
-const categories = ["Semua", "Website", "Mobile App", "Design", "Tulisan"];
+const iconMap = {
+  react: <FaReact className="text-[#61DBFB]" size={20} />,
+  figma: <FaFigma className="text-[#A259FF]" size={20} />,
+  html: <FaHtml5 className="text-[#e34c26]" size={20} />,
+  css: <FaCss3Alt className="text-[#264de4]" size={20} />,
+  js: <FaJsSquare className="text-[#f7df1e]" size={20} />,
+  next: <SiNextdotjs className="text-black" size={20} />,
+  node: <FaNode className="text-[#3C873A]" size={20} />,
+  tailwind: <SiTailwindcss className="text-[#38B2AC]" size={20} />,
+};
+
+const getIcon = (tech) =>
+  iconMap[tech.toLowerCase()] || (
+    <span className="text-sm bg-white/70 px-2 rounded-full">
+      {tech.toUpperCase()}
+    </span>
+  );
+
+const categories = ["Semua", "Website", "Mobile App", "UI/UX", "Tulisan"];
 
 export default function ProjectsList() {
   const [selected, setSelected] = useState("Semua");
@@ -174,24 +200,18 @@ export default function ProjectsList() {
   const filteredProjects =
     selected === "Semua"
       ? projects
-      : projects.filter((proj) => proj.category === selected);
-
-  const getIcon = (tech) => {
-    switch (tech.toLowerCase()) {
-      case "react":
-        return <FaReact className="text-[#61DBFB]" size={20} />;
-      case "figma":
-        return <FaFigma className="text-[#A259FF]" size={20} />;
-      case "html":
-        return <FaHtml5 className="text-[#e34c26]" size={20} />;
-      default:
-        return (
-          <span className="text-sm bg-white/70 px-2 rounded-full">
-            {tech.toUpperCase()}
-          </span>
+      : projects.filter((proj) =>
+          Array.isArray(proj.category)
+            ? proj.category.includes(selected)
+            : proj.category === selected
         );
-    }
-  };
+
+  const getIcon = (tech) =>
+    iconMap[tech.toLowerCase()] || (
+      <span className="text-sm bg-white/70 px-2 rounded-full">
+        {tech.toUpperCase()}
+      </span>
+    );
 
   return (
     <section className="max-w-screen-md mx-auto px-6 flex flex-col gap-16 pt-20">
@@ -269,15 +289,14 @@ export default function ProjectsList() {
             className={`swiper-pagination-${idx} !relative !mt-3 flex justify-center`}
           />
 
-          {/* Tag Teknologi (text) */}
-          {project.tech?.length > 0 && (
+          {Array.isArray(project.category) && project.category.length > 0 && (
             <div className="flex flex-wrap justify-center gap-2">
-              {project.tech.map((tag, i) => (
+              {project.category.map((cat, i) => (
                 <span
                   key={i}
-                  className="bg-gray-100 text-gray-800 text-sm px-3 py-1 rounded-full"
+                  className="bg-[#FD853A] text-white font-semibold text-sm px-3 py-1 rounded-full"
                 >
-                  {tag}
+                  {cat}
                 </span>
               ))}
             </div>

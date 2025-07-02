@@ -1,24 +1,20 @@
-// // src/app/api/portfolio/[id]/route.js
-// import { supabase } from "@/lib/supabaseClient";
+// app/projects/[id]/page.js atau .jsx
 
-// export async function GET(req, { params }) {
-//   const { id } = params;
-//   const { data, error } = await supabase.from("portfolio").select("*").eq("id", id).single();
-//   if (error) return Response.json({ error: error.message }, { status: 500 });
-//   return Response.json(data);
-// }
+import { notFound } from "next/navigation";
 
-// export async function PUT(req, { params }) {
-//   const { id } = params;
-//   const body = await req.json();
-//   const { data, error } = await supabase.from("portfolio").update(body).eq("id", id).select();
-//   if (error) return Response.json({ error: error.message }, { status: 500 });
-//   return Response.json(data[0]);
-// }
+export default async function ProjectDetail({ params }) {
+  const { id } = params;
 
-// export async function DELETE(req, { params }) {
-//   const { id } = params;
-//   const { error } = await supabase.from("portfolio").delete().eq("id", id);
-//   if (error) return Response.json({ error: error.message }, { status: 500 });
-//   return Response.json({ success: true });
-// }
+  const res = await fetch(`http://localhost:3001/api/portfolio/${id}`);
+  const data = await res.json();
+
+  if (!data) return notFound();
+
+  return (
+    <section className="max-w-screen-md mx-auto px-6 pt-20">
+      <h1 className="text-2xl font-bold mb-4">{data.title}</h1>
+      <p className="text-gray-700 mb-4">{data.desc}</p>
+      {/* tambahkan gambar, tech, dll */}
+    </section>
+  );
+}

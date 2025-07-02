@@ -33,11 +33,11 @@ export async function PUT(req, { params }) {
   const { id } = params;
   const body = await req.json();
 
-  const { title, desc, category, date, tech, image } = body;
+  const { title, desc, category, date, tech, link, image } = body;
 
   const { error } = await supabase
-    .from("portfolio") // ✅ udah bener sekarang
-    .update({ title, desc, category, date, tech, image })
+    .from("portfolio")
+    .update({ title, desc, category, date, tech, image, link }) // tambahin `link`
     .eq("id", id);
 
   if (error) {

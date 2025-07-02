@@ -1,28 +1,55 @@
 "use client";
 import Image from "next/image";
-import { FiArrowRight } from "react-icons/fi";
 import { FaStar } from "react-icons/fa";
 import { motion } from "framer-motion";
+import { useState, useEffect } from "react";
+import {
+  FaReact,
+  FaFigma,
+  FaHtml5,
+  FaCss3Alt,
+  FaJsSquare,
+  FaNode,
+} from "react-icons/fa";
+import { SiNextdotjs, SiTailwindcss } from "react-icons/si";
 
-const projects = [
-  {
-    title: "Judul Project",
-    desc: "Deskripsi singkat project",
-    category: "Website",
-    date: "Jun 2025",
-    image: "/img/blog_1.JPG",
-  },
-  {
-    title: "Judul Project",
-    desc: "Deskripsi singkat project",
-    category: "Website",
-    date: "Jun 2025",
-    image: "/img/blog_1.JPG",
-  },
-  // Tambahkan lebih banyak project di sini...
-];
+const iconMap = {
+  react: <FaReact className="text-[#61DBFB]" size={20} />,
+  figma: <FaFigma className="text-[#A259FF]" size={20} />,
+  html: <FaHtml5 className="text-[#e34c26]" size={20} />,
+  css: <FaCss3Alt className="text-[#264de4]" size={20} />,
+  js: <FaJsSquare className="text-[#f7df1e]" size={20} />,
+  next: <SiNextdotjs className="text-black" size={20} />,
+  node: <FaNode className="text-[#3C873A]" size={20} />,
+  tailwind: <SiTailwindcss className="text-[#38B2AC]" size={20} />,
+};
+
+const getIcon = (tech) =>
+  iconMap[tech.toLowerCase()] || (
+    <span className="text-sm bg-white/70 px-2 rounded-full">
+      {tech.toUpperCase()}
+    </span>
+  );
 
 export default function Portfolio() {
+  const [projects, setProjects] = useState([]);
+
+  useEffect(() => {
+    const fetchLatestProjects = async () => {
+      const res = await fetch("/api/portfolio");
+      const data = await res.json();
+
+      // Urutkan berdasarkan tanggal terbaru, lalu ambil maksimal 6
+      const sorted = data
+        .sort((a, b) => new Date(b.date) - new Date(a.date))
+        .slice(0, 6);
+
+      setProjects(sorted);
+    };
+
+    fetchLatestProjects();
+  }, []);
+
   return (
     <section id="portfolio" className="bg-[#F2F4F7] py-20">
       <div className="max-w-screen-xl mx-auto px-6 lg:px-20">
@@ -58,17 +85,12 @@ export default function Portfolio() {
             transition={{ duration: 0.6, delay: 0.1 }}
             viewport={{ once: true }}
           >
-            {/* Background Orange */}
             <div className="bg-[#FD853A] h-[42px] w-[270px] rounded-full" />
-
-            {/* Button Biru Tua */}
             <div className="absolute top-0 left-0 bg-[#263650] text-white rounded-full h-[42px] w-[200px] flex items-center justify-between pl-6 pr-10 z-10">
               <span className="text-sm md:text-base whitespace-nowrap">
                 Lihat Semua Projects
               </span>
             </div>
-
-            {/* Icon Panah + Bulatan Putih */}
             <div className="absolute top-1/2 left-[210px] -translate-y-1/2 transform transition-transform duration-300 ease-in-out group-hover:translate-x-2 bg-white w-[38px] h-[38px] rounded-full flex items-center justify-center z-20">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -101,26 +123,58 @@ export default function Portfolio() {
                 ease: "easeOut",
               }}
               viewport={{ once: true, amount: 0.3 }}
-              className="bg-white rounded-2xl p-4 shadow-sm"
+              className="bg-white rounded-2xl p-4 shadow-sm cursor-pointer"
+              onClick={() => {
+                if (project.link) {
+                  window.open(project.link, "_blank");
+                }
+              }}
             >
+              {/* Gambar */}
               <div className="w-full h-[272px] relative rounded-xl overflow-hidden mb-4">
                 <Image
-                  src={project.image}
+                  src={project.image?.[0] || "/img/default.jpg"}
                   alt={project.title}
                   fill
                   className="object-cover"
                 />
+
+                {/* Tech Icons */}
+                <div className="absolute bottom-4 left-4 flex gap-2 z-10">
+                  {project.tech?.map((tag, i) => (
+                    <div
+                      key={i}
+                      className="bg-white/70 backdrop-blur-sm p-2 rounded-full"
+                    >
+                      {getIcon(tag)}
+                    </div>
+                  ))}
+                </div>
               </div>
 
-              <div className="flex items-center justify-between mb-2">
-                <span className="text-sm font-semibold bg-[#FD853A] text-white px-3 py-1 rounded-full">
-                  {project.category}
-                </span>
+              {/* Kategori & Tanggal */}
+              <div className="flex items-center justify-between mb-2 flex-wrap gap-2">
+                <div className="flex flex-wrap gap-2">
+                  {Array.isArray(project.category) &&
+                    project.category.map((cat, idx) => (
+                      <span
+                        key={idx}
+                        className="text-sm font-semibold bg-[#FD853A] text-white px-3 py-1 rounded-full"
+                      >
+                        {cat}
+                      </span>
+                    ))}
+                </div>
                 <span className="text-sm text-gray-500">{project.date}</span>
               </div>
 
+              {/* Judul & Deskripsi */}
               <h3 className="text-lg font-bold text-black">{project.title}</h3>
-              <p className="text-sm text-gray-600">{project.desc}</p>
+              <p className="text-sm text-gray-600 mb-2">
+                {project.desc?.length > 100
+                  ? project.desc.slice(0, 100) + "..."
+                  : project.desc}
+              </p>
             </motion.div>
           ))}
         </div>
