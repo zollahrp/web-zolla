@@ -1,24 +1,13 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { FiEdit, FiTrash2, FiPlus } from "react-icons/fi";
 import PortfolioModal from "./PortfolioModal";
-import Pagination from "../shared/Pagination.js";
+import Pagination from "../shared/Pagination";
 import Swal from "sweetalert2";
 
 export default function PortfolioTable() {
-  const [projects, setProjects] = useState([
-    {
-      id: 1,
-      title: "Judul Project",
-      desc: "Deskripsi singkat project",
-      category: "Website",
-      date: "Jun 2025",
-      image: ["/img/blog_1.JPG"],
-      tech: ["html", "css", "js"],
-    },
-  ]);
-
+  const [projects, setProjects] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [modalOpen, setModalOpen] = useState(false);
   const [editingProject, setEditingProject] = useState(null);
@@ -30,23 +19,27 @@ export default function PortfolioTable() {
     currentPage * perPage
   );
 
-  const handleAdd = (project) => {
-    if (project.id) {
-      setProjects((prev) =>
-        prev.map((p) => (p.id === project.id ? project : p))
-      );
-    } else {
-      setProjects((prev) => [...prev, { ...project, id: Date.now() }]);
+  const fetchProjects = async () => {
+    try {
+      const res = await fetch("/api/portfolio");
+      const data = await res.json();
+      console.log("Data dari API:", data);
+      if (Array.isArray(data)) {
+        setProjects(data);
+      }
+    } catch (err) {
+      console.error("Gagal ambil data:", err);
     }
+  };
+
+  useEffect(() => {
+    fetchProjects();
+  }, []);
+
+  const handleRefetch = () => {
+    fetchProjects();
     setModalOpen(false);
     setEditingProject(null);
-    Swal.fire({
-      icon: "success",
-      title: "Berhasil",
-      text: `Project berhasil ${project.id ? "diupdate" : "ditambahkan"}`,
-      timer: 1500,
-      showConfirmButton: false,
-    });
   };
 
   const handleEdit = (project) => {
@@ -54,7 +47,7 @@ export default function PortfolioTable() {
     setModalOpen(true);
   };
 
-  const handleDelete = (id) => {
+  const handleDelete = async (id) => {
     Swal.fire({
       title: "Hapus Project?",
       text: "Data yang dihapus tidak bisa dikembalikan!",
@@ -63,16 +56,23 @@ export default function PortfolioTable() {
       confirmButtonColor: "#FD853A",
       cancelButtonColor: "#d33",
       confirmButtonText: "Ya, Hapus!",
-    }).then((result) => {
+    }).then(async (result) => {
       if (result.isConfirmed) {
-        setProjects(projects.filter((p) => p.id !== id));
-        Swal.fire({
-          icon: "success",
-          title: "Berhasil!",
-          text: "Project berhasil dihapus.",
-          timer: 1500,
-          showConfirmButton: false,
-        });
+        try {
+          await fetch(`/api/portfolio/${id}`, {
+            method: "DELETE",
+          });
+          fetchProjects();
+          Swal.fire({
+            icon: "success",
+            title: "Berhasil!",
+            text: "Project berhasil dihapus.",
+            timer: 1500,
+            showConfirmButton: false,
+          });
+        } catch (err) {
+          console.error("Gagal hapus:", err);
+        }
       }
     });
   };
@@ -116,7 +116,7 @@ export default function PortfolioTable() {
               <tr key={item.id} className="hover:bg-gray-50">
                 <td className="p-4">
                   <img
-                    src={item.image[0]}
+                    src={item.image?.[0] || "/img/default.jpg"}
                     alt={item.title}
                     className="w-16 h-16 object-cover rounded"
                   />
@@ -126,7 +126,7 @@ export default function PortfolioTable() {
                 <td className="p-4">{item.category}</td>
                 <td className="p-4">
                   <div className="flex gap-1 items-center flex-wrap">
-                    {item.tech.map((t) => (
+                    {item.tech?.map((t) => (
                       <img
                         key={t}
                         src={`/icons/${t}.svg`}
@@ -164,12 +164,11 @@ export default function PortfolioTable() {
         onPageChange={(page) => setCurrentPage(page)}
       />
 
-      {/* Modal */}
       {modalOpen && (
         <PortfolioModal
           isOpen={modalOpen}
           onClose={() => setModalOpen(false)}
-          onSubmit={handleAdd}
+          onSubmit={handleRefetch}
           initialData={editingProject}
         />
       )}

@@ -23,6 +23,7 @@ export const projects = [
     tags: ["React", "Figma"],
     techTags: ["Landing Page", "Product Design", "Animation", "Glassmorphism", "Cards"],
     images: ["/img/blog_1.jpg", "/img/blog_1.jpg", "/img/blog_1.jpg"],
+    link: "https://zolla.vercel.app", // <--- Tambahin link
   },
   // Tambahkan data lain...
 ];
