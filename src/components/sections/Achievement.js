@@ -1,68 +1,42 @@
 "use client";
+import { useEffect, useState } from "react";
+import { createClient } from "@supabase/supabase-js";
 import { FaAward } from "react-icons/fa";
 import { motion } from "framer-motion";
 
-const achievements = {
-  kompetisi: [
-    {
-      title: "Juara 1 Essay Competition National",
-      event: "Kopma Fair Season 10 – UIN Malang",
-      date: "April 2025",
-      logo: "/img/blog_1.JPG",
-    },
-    {
-      title: "Juara 1 Business Model Canvas National",
-      event: "BEM Fakultas Ilmu Administrasi – Universitas Brawijaya",
-      date: "Juni 2025",
-      logo: "/img/blog_1.JPG",
-    },
-    {
-      title: "Top 10 Business Model Canvas Competition",
-      event: "Agrifest – Universitas Jember",
-      date: "April 2024",
-      logo: "/img/blog_1.JPG",
-    },
-    {
-      title: "Top 5 Best Essay National Competition",
-      event: "NEC – UNNES",
-      date: "Juni 2024",
-      logo: "/img/blog_1.JPG",
-    },
-  ],
-  organisasi: [
-    {
-      title: "Movers Facilitator",
-      event: "UNPD Indonesia",
-      date: "Juni 2025",
-      logo: "/img/blog_1.JPG",
-    },
-    {
-      title: "Staff Teraktif Se-LS Biro Departement Akpres",
-      event: "BEM SV IPB",
-      date: "Des 2024",
-      logo: "/img/blog_1.JPG",
-    },
-    {
-      title: "Staff Teraktif Se-LS Biro Departement Akpres",
-      event: "BEM SV IPB",
-      date: "Des 2024",
-      logo: "/img/blog_1.JPG",
-    },
-    {
-      title: "Staff Teraktif Se-LS Biro Departement Akpres",
-      event: "BEM SV IPB",
-      date: "Des 2024",
-      logo: "/img/blog_1.JPG",
-    },
-  ],
-};
+const supabase = createClient(
+  process.env.NEXT_PUBLIC_SUPABASE_URL,
+  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
+);
 
 export default function Achievement() {
+  const [data, setData] = useState({ kompetisi: [], organisasi: [] });
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const { data: all, error } = await supabase
+        .from("achievements")
+        .select("*")
+        .order("created_at", { ascending: false });
+
+      if (!error && all) {
+        const grouped = {
+          kompetisi: all.filter((d) => d.type === "kompetisi"),
+          organisasi: all.filter((d) => d.type === "organisasi"),
+        };
+        setData(grouped);
+      }
+    };
+
+    fetchData();
+  }, []);
+
   return (
     <section id="achievement" className="bg-white py-20">
       <div className="max-w-screen-xl mx-auto px-8 lg:px-20">
         {/* Title */}
-        <motion.div className="flex items-center gap-2 mb-2"
+        <motion.div
+          className="flex items-center gap-2 mb-2"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.1 }}
@@ -72,7 +46,8 @@ export default function Achievement() {
           <span className="font-semibold text-black">Achievement</span>
         </motion.div>
 
-        <motion.h2 className="text-3xl sm:text-4xl font-bold mb-10"
+        <motion.h2
+          className="text-3xl sm:text-4xl font-bold mb-10"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.1 }}
@@ -81,11 +56,10 @@ export default function Achievement() {
           <span className="text-[#FD853A]">Pencapaian</span> yang saya peroleh
         </motion.h2>
 
-        {/* Grid Achievement */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-0">
-          {/* Kolom Kiri - Kompetisi */}
+          {/* Kompetisi */}
           <div className="divide-y-2 divide-black">
-            {achievements.kompetisi.map((item, i) => (
+            {data.kompetisi.map((item, i) => (
               <motion.div
                 key={i}
                 initial={{ opacity: 0, y: 40, scale: 0.95 }}
@@ -115,9 +89,9 @@ export default function Achievement() {
             ))}
           </div>
 
-          {/* Kolom Kanan - Organisasi */}
+          {/* Organisasi */}
           <div className="divide-y-2 divide-black">
-            {achievements.organisasi.map((item, i) => (
+            {data.organisasi.map((item, i) => (
               <motion.div
                 key={i}
                 initial={{ opacity: 0, y: 40, scale: 0.95 }}
