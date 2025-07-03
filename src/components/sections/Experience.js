@@ -56,10 +56,11 @@ export default function Experience() {
             initial={{ height: 0 }}
             whileInView={{ height: "100%" }}
             transition={{ duration: 0.8, ease: "easeOut" }}
+            viewport={{ once: true }}
             className="absolute top-0 bottom-0 left-1/2 -translate-x-1/2 w-px border-l-2 border-dashed border-[#263650] z-0"
           />
 
-          {data.map((item, i) => (
+          {data.slice(0, 5).map((item, i) => (
             <motion.div
               key={i}
               className="grid grid-cols-[2fr_40px_2fr] items-center mb-14 relative"

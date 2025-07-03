@@ -63,14 +63,14 @@ export default function Skills() {
           {skills.map((skill, i) => (
             <motion.div
                 key={i}
-                initial={{ opacity: 0, y: 40 }}
+                initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0, scale: 1 }}
                 transition={{
-                  duration: 0.5,
+                  duration: 0.4,
                   delay: i * 0.15,
                   ease: "easeOut",
               }}
-              viewport={{ once: true, amount: 0.3 }}
+              viewport={{ once: true, amount: 0.2 }}
               className="group aspect-square border-2 border-black/20 rounded-2xl text-center flex flex-col items-center justify-center transition-all duration-300 hover:border-[#FD853A] hover:text-[#FD853A] cursor-pointer"
             >
               <div className="text-4xl mb-2 transition-all duration-300 group-hover:scale-110">

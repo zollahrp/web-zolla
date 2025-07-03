@@ -48,6 +48,14 @@ export async function DELETE(req) {
 
   const { error } = await supabase.from("experiences").delete().eq("id", id);
 
-  if (error) return Response.json({ error: error.message }, { status: 500 });
-  return Response.json({ message: "Deleted" });
+  if (error)
+    return new Response(JSON.stringify({ error: error.message }), {
+      status: 500,
+      headers: { "Content-Type": "application/json" },
+    });
+
+  return new Response(JSON.stringify({ message: "Deleted" }), {
+    status: 200,
+    headers: { "Content-Type": "application/json" },
+  });
 }

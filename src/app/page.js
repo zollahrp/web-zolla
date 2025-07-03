@@ -21,7 +21,7 @@ export const metadata = {
 export default function LandingPage() {
   return (
     <>
-      <LenisWrapper />
+      {/* <LenisWrapper /> */}
       <Home />
       <Experience />
       <About />

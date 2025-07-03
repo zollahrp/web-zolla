@@ -38,6 +38,16 @@ body {
   animation: marquee-scroll 20s linear infinite;
 }
 
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track {
+    animation: none !important;
+  }
+}
+
+.marquee-paused {
+  animation-play-state: paused !important;
+}
+
 @keyframes marquee-scroll {
   0% { transform: translateX(0%); }
   100% { transform: translateX(-50%); }

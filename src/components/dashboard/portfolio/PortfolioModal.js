@@ -28,6 +28,8 @@ export default function PortfolioModal({
     "Mobile App",
     "UI/UX",
     "Tulisan",
+    "Motion Graphics",
+    "Powerpoint",
   ]);
   const [newCategory, setNewCategory] = useState("");
 

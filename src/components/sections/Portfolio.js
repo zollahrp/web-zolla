@@ -39,12 +39,52 @@ export default function Portfolio() {
       const res = await fetch("/api/portfolio");
       const data = await res.json();
 
-      // Urutkan berdasarkan tanggal terbaru, lalu ambil maksimal 6
-      const sorted = data
-        .sort((a, b) => new Date(b.date) - new Date(a.date))
-        .slice(0, 6);
+      const parseStartDate = (dateString) => {
+        const monthMap = {
+          Januari: 0,
+          Februari: 1,
+          Maret: 2,
+          April: 3,
+          Mei: 4,
+          Juni: 5,
+          Juli: 6,
+          Agustus: 7,
+          September: 8,
+          Oktober: 9,
+          November: 10,
+          Desember: 11,
+        };
 
-      setProjects(sorted);
+        if (!dateString) return new Date(0);
+
+        const cleaned = dateString.replace(/[-–—]/g, "–");
+        const parts = cleaned.includes("–")
+          ? cleaned.split("–")
+          : [cleaned, cleaned];
+
+        const start = parts[0].trim();
+        const [monthStr, yearStr] = start.split(" ");
+
+        const month = monthMap[monthStr?.trim()];
+        let year = parseInt(yearStr?.trim());
+        if (year < 100) year += 2000;
+
+        if (isNaN(month) || isNaN(year)) return new Date(0);
+
+        return new Date(year, month);
+      };
+
+      const filteredData = data.filter(
+        (item) =>
+          item.date &&
+          !(Array.isArray(item.category) && item.category.includes("Tulisan"))
+      );
+
+      const sorted = filteredData.sort(
+        (a, b) => parseStartDate(b.date) - parseStartDate(a.date)
+      );
+
+      setProjects(sorted.slice(0, 6));
     };
 
     fetchLatestProjects();
