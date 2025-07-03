@@ -3,14 +3,14 @@ import Image from "next/image";
 import HelloBox from "../HelloBox";
 import Services from "./Services";
 import { motion } from "framer-motion";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react"; // ✅ FIX import ganda
 import { animate, stagger } from "motion";
 import { splitText } from "motion-plus";
 import MarqueeSection from "./MarqueeSection";
-import { FiDownload } from "react-icons/fi";
 
 export default function Home() {
   const headlineRef = useRef(null);
+  const [showModal, setShowModal] = useState(false);
 
   useEffect(() => {
     document.fonts.ready.then(() => {
@@ -41,15 +41,15 @@ export default function Home() {
             hidden: {},
             visible: {
               transition: {
-                staggerChildren: 0.3, // Delay antar elemen
+                staggerChildren: 0.3,
               },
             },
           }}
         >
-          {/* HelloBox tetap animasi sendiri */}
+          {/* HelloBox */}
           <HelloBox />
 
-          {/* Judul*/}
+          {/* Judul */}
           <motion.h1
             className="text-4xl sm:text-5xl lg:text-5xl font-bold text-[#263650] leading-tight"
             initial={{ opacity: 0, y: 20 }}
@@ -74,10 +74,8 @@ export default function Home() {
           </motion.p>
 
           {/* BUTTON */}
-          <motion.a
-            href="https://drive.google.com/drive/folders/1EhEvBS-iIfQeeEwjsmT3CbLtlw-eXeQr"
-            target="_blank"
-            rel="noopener noreferrer"
+          <motion.button
+            onClick={() => setShowModal(true)}
             className="relative w-[300px] block group"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -105,7 +103,7 @@ export default function Home() {
                 />
               </svg>
             </div>
-          </motion.a>
+          </motion.button>
         </motion.div>
 
         {/* Right Image */}
@@ -134,12 +132,31 @@ export default function Home() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: 2.7 }}
       >
-        {/* === Marquee Section === */}
         <MarqueeSection />
       </motion.div>
 
       {/* === Services Section === */}
       <Services />
+
+      {/* === Modal PDF CV === */}
+      {showModal && (
+        <div className="fixed inset-0 bg-black bg-opacity-60 flex justify-center items-center z-50">
+          <div className="bg-white w-[90%] h-[90%] relative rounded-xl overflow-hidden shadow-xl">
+            <button
+              className="absolute top-4 right-4 bg-[#FD853A] text-white px-3 py-1 rounded-full z-10 hover:bg-[#e5732c]"
+              onClick={() => setShowModal(false)}
+            >
+              ✕
+            </button>
+            <iframe
+              src="https://rcljtsnaqwlqnbwknsdm.supabase.co/storage/v1/object/public/cv-files//CV_Zolla%20Perdana%20Putra%20Harahap.pdf"
+              className="w-full h-full"
+              loading="lazy"
+              title="Curriculum Vitae Zolla Perdana"
+            ></iframe>
+          </div>
+        </div>
+      )}
     </section>
   );
 }

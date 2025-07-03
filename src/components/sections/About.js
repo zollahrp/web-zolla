@@ -148,7 +148,7 @@ export default function About() {
           >
             {/* Button Download CV */}
             <a
-              href="/cv.pdf"
+              href="/CV_Zolla Perdana Putra Harahap.pdf"
               download
               className="relative w-[300px] block group"
             >
