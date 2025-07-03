@@ -64,7 +64,7 @@ export default function BlogPreview() {
           <div className="bg-[#FD853A] h-[42px] w-[250px] rounded-full" />
           <div className="absolute top-0 left-0 bg-[#263650] text-white rounded-full h-[42px] w-[180px] flex items-center justify-between pl-6 pr-10 z-10">
             <span className="text-sm md:text-base whitespace-nowrap">
-              Lihat Semua Blogs
+              Lihat Semua Blog
             </span>
           </div>
           <div className="absolute top-1/2 left-[190px] -translate-y-1/2 transform transition-transform duration-300 ease-in-out group-hover:translate-x-2 bg-white w-[38px] h-[38px] rounded-full flex items-center justify-center z-20">

@@ -113,7 +113,7 @@ export default function Portfolio() {
               transition={{ duration: 0.6, delay: 0.1 }}
               viewport={{ once: true }}
             >
-              <span className="text-[#FD853A]">Project</span> Terbaru saya
+              <span className="text-[#FD853A]">Proyek</span> Terbaru yang Telah Saya Selesaikan
             </motion.h2>
           </div>
 
@@ -128,7 +128,7 @@ export default function Portfolio() {
             <div className="bg-[#FD853A] h-[42px] w-[270px] rounded-full" />
             <div className="absolute top-0 left-0 bg-[#263650] text-white rounded-full h-[42px] w-[200px] flex items-center justify-between pl-6 pr-10 z-10">
               <span className="text-sm md:text-base whitespace-nowrap">
-                Lihat Semua Projects
+                Lihat Semua Proyek
               </span>
             </div>
             <div className="absolute top-1/2 left-[210px] -translate-y-1/2 transform transition-transform duration-300 ease-in-out group-hover:translate-x-2 bg-white w-[38px] h-[38px] rounded-full flex items-center justify-center z-20">

@@ -107,7 +107,7 @@ export default function ProjectsList() {
     );
 
   return (
-    <section className="max-w-screen-md mx-auto px-6 flex flex-col gap-16 pt-20">
+    <section className="max-w-screen-md mx-auto px-6 flex flex-col gap-16 pt-0">
       {/* Filter */}
       <div className="flex flex-wrap justify-center gap-3">
         {categories.map((cat) => (
@@ -139,7 +139,7 @@ export default function ProjectsList() {
           }}
         >
           {/* Gambar (Slider) */}
-          <div className="relative w-full h-[280px] overflow-hidden rounded-2xl">
+          <div className="relative w-full aspect-[16/9] overflow-hidden rounded-2xl">
             <Swiper
               modules={[Pagination]}
               spaceBetween={10}
@@ -152,7 +152,7 @@ export default function ProjectsList() {
             >
               {(project.image || []).map((img, i) => (
                 <SwiperSlide key={i}>
-                  <div className="relative w-full h-[280px]">
+                  <div className="relative w-full aspect-[16/9]">
                     <Image
                       src={img}
                       alt={project.title}

@@ -51,7 +51,7 @@ export default function BlogPage() {
             viewport={{ once: true }}
           >
             Selamat datang di laman <span className="text-[#FD853A]">Zolla nge-Blog</span>{" "}
-            teman-teman
+            teman-teman👋
           </motion.h2>
 
           {/* Dropdown Filter */}
