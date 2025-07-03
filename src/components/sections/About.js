@@ -7,8 +7,8 @@ import CountUp from "@/components/elements/CountUp";
 export default function About() {
   return (
     <section id="about" className="bg-[#F2F4F7] py-20">
-      <div className="max-w-screen-xl mx-auto flex flex-col lg:flex-row items-center justify-between px-8 lg:px-20 gap-12">
-        {/* === Left - Foto === */}
+      <div className="max-w-screen-xl mx-auto flex flex-col-reverse lg:flex-row items-center justify-between px-8 lg:px-20 gap-12">
+        {/* === Left - Foto (tapi muncul terakhir di mobile karena flex-col-reverse) === */}
         <motion.div
           className="w-full lg:w-2/4 flex justify-center relative"
           initial={{ opacity: 0, x: -50 }}
@@ -41,7 +41,7 @@ export default function About() {
             },
           }}
         >
-          {/* Icon dan Judul */}
+          {/* Icon & Title */}
           <motion.div
             className="flex items-center gap-2 mb-2"
             initial={{ opacity: 0, y: 20 }}
@@ -89,12 +89,13 @@ export default function About() {
               >
                 <CountUp to={10} duration={1.2} delay={0.4} />
               </motion.span>
-              <motion.p className="text-black text-sm font-medium mt-1"
+              <motion.p
+                className="text-black text-sm font-medium mt-1"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.8 }}
                 viewport={{ once: true }}
-                >
+              >
                 Project Selesai
               </motion.p>
             </div>
@@ -108,12 +109,13 @@ export default function About() {
               >
                 <CountUp to={24} duration={1.5} delay={0.6} />
               </motion.span>
-              <motion.p className="text-black text-sm font-medium mt-1"
+              <motion.p
+                className="text-black text-sm font-medium mt-1"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.8 }}
                 viewport={{ once: true }}
-                >
+              >
                 Mengikuti Kompetisi
               </motion.p>
             </div>
@@ -127,12 +129,13 @@ export default function About() {
               >
                 <CountUp to={2} duration={1.3} delay={0.8} />
               </motion.span>
-              <motion.p className="text-black text-sm font-medium mt-1"
+              <motion.p
+                className="text-black text-sm font-medium mt-1"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.8 }}
                 viewport={{ once: true }}
-                >
+              >
                 Tahun Pengalaman
               </motion.p>
             </div>
