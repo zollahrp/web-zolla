@@ -5,6 +5,7 @@ import { useState } from "react";
 import { FiMenu, FiBell } from "react-icons/fi";
 import { FaGithub } from "react-icons/fa";
 import Image from "next/image";
+import LogoutButton from '@/components/ui/LogoutButton';
 
 export default function header({ onToggleSidebar }) {
   return (
@@ -51,6 +52,7 @@ export default function header({ onToggleSidebar }) {
             </span>
           </button>
         </div>
+        <LogoutButton />
         <div className="flex items-center gap-2">
           <Image
             src="/img/avatar.jpg"

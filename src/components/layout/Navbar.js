@@ -28,12 +28,6 @@ const navLinks = [
 
 export default function Navbar() {
   const pathname = usePathname(); // <--- Tambahin ini
-
-  // Kalau lagi di halaman dashboard, jangan render navbar
-  if (pathname.startsWith("/zaga")) return null;
-
-
-
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeHash, setActiveHash] = useState("#home");
 
@@ -132,6 +126,9 @@ export default function Navbar() {
     window.addEventListener("scroll", handleScrollSpy);
     return () => window.removeEventListener("scroll", handleScrollSpy);
   }, []);
+
+  // Kalau lagi di halaman dashboard, jangan render navbar
+  if (pathname.startsWith("/zaga")) return null;
 
   return (
     <div className="relative w-full">
