@@ -66,7 +66,7 @@ export default function Contact() {
           whileInView={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.6, ease: "easeOut", delay: 0.2 }}
           viewport={{ once: true }}
-          className="flex flex-col sm:flex-row items-center gap-4 border-2 border-[#E5E7EB] rounded-full px-4 py-2 shadow-sm"
+          className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4 border-2 border-[#E5E7EB] rounded-2xl px-4 py-4 sm:py-2 shadow-sm"
         >
           <div className="flex items-center justify-center w-10 h-10 bg-[#FD853A] rounded-full">
             <FaEnvelope className="text-white" />
@@ -77,12 +77,12 @@ export default function Contact() {
             name="email"
             placeholder="Alamat email kamu"
             required
-            className="flex-1 outline-none bg-transparent px-2 text-sm text-black"
+            className="w-full sm:w-auto flex-1 outline-none bg-transparent px-2 py-2 text-sm text-black"
           />
 
           <button
             type="submit"
-            className="bg-[#FD853A] text-white font-semibold px-6 py-2 rounded-full hover:opacity-90 transition"
+            className="w-full sm:w-auto bg-[#FD853A] text-white font-semibold px-6 py-2 rounded-full hover:opacity-90 transition"
           >
             Kirim
           </button>
@@ -100,9 +100,8 @@ export default function Contact() {
           </p>
         )}
 
-        {/* Socials */}
         <motion.div
-          className="flex justify-center flex-wrap gap-6 mt-6 text-sm text-[#263650] font-medium"
+          className="flex justify-center flex-wrap gap-4 sm:gap-6 mt-6 text-sm sm:text-base text-[#263650] font-medium"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
@@ -135,7 +134,7 @@ export default function Contact() {
               key={i}
               href={item.href}
               target="_blank"
-              className="flex items-center gap-2 hover:underline"
+              className="flex items-center gap-2 hover:underline text-center break-words"
               variants={{
                 hidden: { opacity: 0, y: 10 },
                 visible: { opacity: 1, y: 0 },

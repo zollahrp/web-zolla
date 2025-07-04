@@ -119,18 +119,15 @@ export default function Portfolio() {
 
           <motion.a
             href="/projects"
-            className="inline-flex items-center rounded-full bg-[#FD853A] text-white group h-[42px] pr-4" // <--- padding kanan ditambah
+            className="inline-flex items-center rounded-full bg-[#FD853A] text-white group h-[42px] pr-4"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
             viewport={{ once: true }}
           >
-            {/* Bagian biru & teks */}
             <div className="bg-[#263650] rounded-full px-5 py-2 flex items-center text-sm md:text-base">
               Lihat Semua Proyek
             </div>
-
-            {/* Icon panah */}
             <div className="ml-2 bg-white w-[34px] h-[34px] rounded-full flex items-center justify-center transition-transform duration-300 ease-in-out group-hover:translate-x-1">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -163,7 +160,7 @@ export default function Portfolio() {
                 ease: "easeOut",
               }}
               viewport={{ once: true, amount: 0.3 }}
-              className="bg-white rounded-2xl p-4 shadow-sm cursor-pointer"
+              className="group bg-white rounded-2xl p-4 shadow-sm cursor-pointer transition duration-300"
               onClick={() => {
                 if (project.link) {
                   window.open(project.link, "_blank");
@@ -171,16 +168,37 @@ export default function Portfolio() {
               }}
             >
               {/* Gambar */}
-              <div className="w-full h-[272px] relative rounded-xl overflow-hidden mb-4">
+              <div className="w-full h-[272px] relative rounded-xl overflow-hidden mb-4 group">
                 <Image
                   src={project.image?.[0] || "/img/default.jpg"}
                   alt={project.title}
                   fill
-                  className="object-cover"
+                  className="object-cover transition-transform duration-300 group-hover:scale-105"
                 />
 
+                {/* Overlay hitam */}
+                <div className="hidden md:block absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10" />
+
+                {/* Panah diagonal */}
+                <div className="hidden md:flex absolute top-4 right-4 z-20 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    strokeWidth="2"
+                    stroke="#FD853A"
+                    className="w-6 h-6"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M13 5h6m0 0v6m0-6L10 18"
+                    />
+                  </svg>
+                </div>
+
                 {/* Tech Icons */}
-                <div className="absolute bottom-4 left-4 flex gap-2 z-10">
+                <div className="absolute bottom-4 left-4 flex gap-2 z-30">
                   {project.tech?.map((tag, i) => (
                     <div
                       key={i}
