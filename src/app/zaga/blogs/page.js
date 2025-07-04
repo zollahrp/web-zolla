@@ -3,7 +3,8 @@ import { useEffect, useState } from "react";
 import { supabase } from "@/lib/supabaseClient";
 import BlogForm from "@/components/dashboard/blog/BlogForm";
 import BlogTable from "@/components/dashboard/blog/BlogTable";
-import BlogModal from "@/components/dashboard/blog/BlogModal"; // pastikan ada ini
+import BlogModal from "@/components/dashboard/blog/BlogModal"; 
+import AuthGuard from "@/lib/AuthGuard";
 
 export default function BlogDashboardPage() {
   const [blogs, setBlogs] = useState([]);
@@ -64,24 +65,26 @@ export default function BlogDashboardPage() {
   };
 
   return (
-    <div className="p-10 space-y-10">
-      <h1 className="text-3xl font-bold text-[#263650]">Kelola Blog</h1>
+    <AuthGuard>
+      <div className="p-10 space-y-10">
+        <h1 className="text-3xl font-bold text-[#263650]">Kelola Blog</h1>
 
-      <BlogForm onSubmit={handleAddBlog} />
+        <BlogForm onSubmit={handleAddBlog} />
 
-      <BlogTable
-        blogs={blogs}
-        onEdit={handleEditBlog}
-        onDelete={handleDeleteBlog}
-      />
-
-      {showModal && editingBlog && (
-        <BlogModal
-          blog={editingBlog}
-          onClose={() => setShowModal(false)}
-          onSave={handleUpdateBlog}
+        <BlogTable
+          blogs={blogs}
+          onEdit={handleEditBlog}
+          onDelete={handleDeleteBlog}
         />
-      )}
-    </div>
+
+        {showModal && editingBlog && (
+          <BlogModal
+            blog={editingBlog}
+            onClose={() => setShowModal(false)}
+            onSave={handleUpdateBlog}
+          />
+        )}
+      </div>
+    </AuthGuard>
   );
 }

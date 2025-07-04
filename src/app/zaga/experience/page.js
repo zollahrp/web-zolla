@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import Swal from "sweetalert2";
 import ExperienceTable from "@/components/dashboard/experience/ExperienceTable";
 import ExperienceModal from "@/components/dashboard/experience/ExperienceModal";
+import AuthGuard from "@/lib/AuthGuard";
 
 export default function ExperiencePage() {
   const [experiences, setExperiences] = useState([]);
@@ -57,40 +58,42 @@ export default function ExperiencePage() {
   }, []);
 
   return (
-    <div className="p-6">
-      <div className="flex justify-between items-center mb-4">
-        <h1 className="text-2xl font-semibold text-[#263650]">
-          Kelola <span className="text-[#FD853A]">Pengalaman Kerja</span>
-        </h1>
-        <button
-          onClick={() => {
-            setEditing(null);
+    <AuthGuard>
+      <div className="p-6">
+        <div className="flex justify-between items-center mb-4">
+          <h1 className="text-2xl font-semibold text-[#263650]">
+            Kelola <span className="text-[#FD853A]">Pengalaman Kerja</span>
+          </h1>
+          <button
+            onClick={() => {
+              setEditing(null);
+              setShowModal(true);
+            }}
+            className="bg-[#FD853A] text-white px-4 py-2 rounded"
+          >
+            + Tambah Pengalaman
+          </button>
+        </div>
+
+        <ExperienceTable
+          data={experiences}
+          onDelete={handleDelete}
+          onEdit={(exp) => {
+            setEditing(exp);
             setShowModal(true);
           }}
-          className="bg-[#FD853A] text-white px-4 py-2 rounded"
-        >
-          + Tambah Pengalaman
-        </button>
+        />
+
+        <ExperienceModal
+          isOpen={showModal}
+          onClose={() => {
+            setShowModal(false);
+            setEditing(null);
+          }}
+          onSubmit={editing ? editExperience : addExperience}
+          initialData={editing}
+        />
       </div>
-
-      <ExperienceTable
-        data={experiences}
-        onDelete={handleDelete}
-        onEdit={(exp) => {
-          setEditing(exp);
-          setShowModal(true);
-        }}
-      />
-
-      <ExperienceModal
-        isOpen={showModal}
-        onClose={() => {
-          setShowModal(false);
-          setEditing(null);
-        }}
-        onSubmit={editing ? editExperience : addExperience}
-        initialData={editing}
-      />
-    </div>
+    </AuthGuard>
   );
 }
