@@ -113,25 +113,25 @@ export default function Portfolio() {
               transition={{ duration: 0.6, delay: 0.1 }}
               viewport={{ once: true }}
             >
-              <span className="text-[#FD853A]">Proyek</span> Terbaru yang Telah Saya Selesaikan
+              <span className="text-[#FD853A]">Proyek</span> Terbaru Saya
             </motion.h2>
           </div>
 
           <motion.a
             href="/projects"
-            className="relative w-[290px] group"
+            className="inline-flex items-center rounded-full bg-[#FD853A] text-white group h-[42px] pr-4" // <--- padding kanan ditambah
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
             viewport={{ once: true }}
           >
-            <div className="bg-[#FD853A] h-[42px] w-[270px] rounded-full" />
-            <div className="absolute top-0 left-0 bg-[#263650] text-white rounded-full h-[42px] w-[200px] flex items-center justify-between pl-6 pr-10 z-10">
-              <span className="text-sm md:text-base whitespace-nowrap">
-                Lihat Semua Proyek
-              </span>
+            {/* Bagian biru & teks */}
+            <div className="bg-[#263650] rounded-full px-5 py-2 flex items-center text-sm md:text-base">
+              Lihat Semua Proyek
             </div>
-            <div className="absolute top-1/2 left-[210px] -translate-y-1/2 transform transition-transform duration-300 ease-in-out group-hover:translate-x-2 bg-white w-[38px] h-[38px] rounded-full flex items-center justify-center z-20">
+
+            {/* Icon panah */}
+            <div className="ml-2 bg-white w-[34px] h-[34px] rounded-full flex items-center justify-center transition-transform duration-300 ease-in-out group-hover:translate-x-1">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
