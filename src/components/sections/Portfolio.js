@@ -94,7 +94,8 @@ export default function Portfolio() {
     <section id="portfolio" className="bg-[#F2F4F7] py-20">
       <div className="max-w-screen-xl mx-auto px-6 lg:px-20">
         {/* Header */}
-        <div className="flex justify-between items-center mb-10">
+        <div className="grid grid-cols-1 sm:grid-cols-2 sm:items-center mb-10 gap-4 sm:gap-0">
+          {/* Judul + Subjudul */}
           <div>
             <motion.div
               className="flex items-center gap-2 mb-2"
@@ -117,18 +118,27 @@ export default function Portfolio() {
             </motion.h2>
           </div>
 
+          {/* Tombol */}
           <motion.a
             href="/projects"
-            className="inline-flex items-center rounded-full bg-[#FD853A] text-white group h-[42px] pr-4"
+            className="relative w-[250px] group"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
             viewport={{ once: true }}
           >
-            <div className="bg-[#263650] rounded-full px-5 py-2 flex items-center text-sm md:text-base">
-              Lihat Semua Proyek
+            {/* Background orange */}
+            <div className="bg-[#FD853A] h-[42px] w-[250px] rounded-full" />
+
+            {/* Layer biru dengan teks */}
+            <div className="absolute top-0 left-0 bg-[#263650] text-white rounded-full h-[42px] w-[180px] flex items-center justify-between pl-6 pr-10 z-10">
+              <span className="text-sm md:text-base whitespace-nowrap">
+                Lihat Semua Proyek
+              </span>
             </div>
-            <div className="ml-2 bg-white w-[34px] h-[34px] rounded-full flex items-center justify-center transition-transform duration-300 ease-in-out group-hover:translate-x-1">
+
+            {/* Ikon panah putih */}
+            <div className="absolute top-1/2 left-[190px] -translate-y-1/2 transform transition-transform duration-300 ease-in-out group-hover:translate-x-2 bg-white w-[38px] h-[38px] rounded-full flex items-center justify-center z-20">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"

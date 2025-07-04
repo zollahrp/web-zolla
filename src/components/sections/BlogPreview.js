@@ -12,7 +12,6 @@ export default function BlogPreview() {
       const res = await fetch("/api/blogs");
       const data = await res.json();
 
-      // Ambil maksimal 6 blog terbaru
       const latest = data
         .sort((a, b) => new Date(b.created_at) - new Date(a.created_at))
         .slice(0, 6);
@@ -25,10 +24,10 @@ export default function BlogPreview() {
 
   return (
     <section id="blogs" className="pt-20 bg-gray-50 py-20">
-      {/* Header Section */}
-      <div className="max-w-screen-xl mx-auto flex flex-col-reverse lg:flex-row items-center justify-between px-8 lg:px-20 gap-10">
-        {/* Kiri - Teks */}
-        <div className="w-full lg:w-1/2">
+      {/* Header */}
+      <div className="max-w-screen-xl mx-auto px-8 lg:px-20 flex flex-col-reverse sm:flex-row items-start sm:items-center justify-between gap-6 mb-10">
+        {/* Judul */}
+        <div>
           <motion.div
             className="flex items-center gap-2 mb-2"
             initial={{ opacity: 0, y: 20 }}
@@ -39,6 +38,7 @@ export default function BlogPreview() {
             <FaPenNib className="text-[#FD853A]" size={20} />
             <span className="font-semibold text-black">Blogs Post</span>
           </motion.div>
+
           <motion.h2
             className="text-3xl sm:text-4xl font-bold"
             initial={{ opacity: 0, y: 20 }}
@@ -46,16 +46,16 @@ export default function BlogPreview() {
             transition={{ duration: 0.6, delay: 0.1 }}
             viewport={{ once: true }}
           >
-            <span className="text-black">Kumpulan</span>{" "}
-            <span className="text-[#FD853A]">Blog</span>{" "}
+            <span className="text-black">Kumpulan </span>
+            <span className="text-[#FD853A]">Blog </span>
             <span className="text-black">Terbaru</span>
           </motion.h2>
         </div>
 
-        {/* Kanan - Tombol */}
+        {/* Tombol */}
         <motion.a
           href="/blog"
-          className="relative w-[250px] group"
+          className="relative w-[250px] self-center sm:self-auto group"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.1 }}
@@ -86,8 +86,8 @@ export default function BlogPreview() {
         </motion.a>
       </div>
 
-      {/* Grid Card Section */}
-      <div className="max-w-screen-xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 px-8 lg:px-20 mt-10">
+      {/* Grid Blog */}
+      <div className="max-w-screen-xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 px-8 lg:px-20">
         {blogs.map((blog, i) => (
           <motion.div
             key={i}
