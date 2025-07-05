@@ -24,10 +24,10 @@ export default function BlogPage() {
             INGIN JUARA DALAM LOMBA ESAI? BERIKUT TIPS ZOLLA
           </h1>
           <p className="text-white text-sm sm:text-base mb-6">
-            Kompetisi, tutorial
+            Kompetisi
           </p>
           <a
-            href="#list"
+            href="https://www.zollahrp.my.id/blog/tips-juara-esai-ala-zolla"
             className="bg-[#FD853A] text-white font-semibold px-6 py-2 rounded-full hover:opacity-90 transition"
           >
             Lihat postingan
