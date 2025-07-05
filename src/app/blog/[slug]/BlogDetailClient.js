@@ -14,9 +14,18 @@ import {
 
 export default function BlogDetailClient({ blog }) {
   const router = useRouter();
-  const [latestBlogs, setLatestBlogs] = useState([]); // ✅ Tambahkan ini
+  const [latestBlogs, setLatestBlogs] = useState([]);
+  const [popularBlogs, setPopularBlogs] = useState([]); // <- Tambah state ini
 
+  // Tambah view setiap blog dibuka
+  useEffect(() => {
+    if (!blog?.id) return;
+    fetch(`/api/blogs/${blog.id}/view`, {
+      method: "POST",
+    });
+  }, [blog?.id]);
 
+  // Copy protection + fetch latest & popular
   useEffect(() => {
     const handleCopy = (e) => {
       const selection = window.getSelection();
@@ -34,18 +43,38 @@ Website zollahrp.my.id adalah tempat Zolla berbagi cerita, karya, dan pengalaman
 
 Bagikan dengan bijak dan sertakan sumber saat menyalin ya.
 `;
-
       e.clipboardData.setData("text/plain", copiedText + sourceInfo);
       e.preventDefault();
     };
 
-    const fetchLatestBlogs = async () => {
-      const res = await fetch("/api/blogs/latest");
-      const data = await res.json();
-      setLatestBlogs(data);
+    const fetchData = async () => {
+      try {
+        const [latestRes, popularRes] = await Promise.all([
+          fetch("/api/blogs/latest"),
+          fetch("/api/blogs/popular"),
+        ]);
+
+        if (latestRes.ok) {
+          const latestData = await latestRes.json();
+          setLatestBlogs(latestData);
+        } else {
+          console.warn("Gagal fetch blog terbaru");
+        }
+
+        if (popularRes.ok) {
+          const popularData = await popularRes.json();
+          setPopularBlogs(popularData);
+        } else {
+          console.warn("Gagal fetch blog populer");
+        }
+      } catch (err) {
+        console.error("Error fetching blog data:", err);
+      }
     };
 
     document.addEventListener("copy", handleCopy);
+    fetchData();
+
     return () => document.removeEventListener("copy", handleCopy);
   }, [blog]);
 
@@ -78,7 +107,7 @@ Bagikan dengan bijak dan sertakan sumber saat menyalin ya.
 
           <h1 className="text-3xl font-bold mb-2">{blog.title}</h1>
 
-          <div className="flex gap-2 text-sm mb-6 text-gray-600">
+          <div className="flex gap-2 text-sm mb-6 text-gray-600 items-center flex-wrap">
             <span>{blog.category}</span>
             <span>•</span>
             <span>
@@ -88,6 +117,8 @@ Bagikan dengan bijak dan sertakan sumber saat menyalin ya.
                 year: "numeric",
               })}
             </span>
+            <span>•</span>
+            <span>{blog.views ?? 0}x dilihat</span>
           </div>
 
           {blog.image && (
@@ -244,6 +275,33 @@ Bagikan dengan bijak dan sertakan sumber saat menyalin ya.
                           month: "long",
                           year: "numeric",
                         })}
+                      </span>
+                    </div>
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div>
+            <h3 className="font-bold mb-2">Blog Terpopuler</h3>
+            <ul className="space-y-4">
+              {popularBlogs.map((item) => (
+                <li key={item.id}>
+                  <a
+                    href={`/blog/${item.slug}`}
+                    className="flex gap-3 hover:bg-gray-100 rounded-xl p-2 transition"
+                  >
+                    {item.image && (
+                      <img
+                        src={item.image}
+                        alt={item.title}
+                        className="w-16 h-16 rounded object-cover"
+                      />
+                    )}
+                    <div className="flex flex-col justify-between text-sm">
+                      <strong className="line-clamp-2">{item.title}</strong>
+                      <span className="text-xs text-gray-500">
+                        {item.views ?? 0}x dilihat
                       </span>
                     </div>
                   </a>

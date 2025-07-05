@@ -41,7 +41,9 @@ export default function BlogList({ sort }) {
           }}
         >
           <Link
-            href={`/blog/${encodeURIComponent(blog.title.toLowerCase().replace(/\s+/g, "-"))}`}
+            href={`/blog/${encodeURIComponent(
+              blog.title.toLowerCase().replace(/\s+/g, "-")
+            )}`}
             className="block bg-white rounded-s shadow-sm overflow-hidden hover:shadow-md transition"
           >
             <img
@@ -50,7 +52,7 @@ export default function BlogList({ sort }) {
               className="w-full h-52 object-cover"
             />
             <div className="p-4 space-y-3">
-              <div className="flex items-center gap-2 text-sm">
+              <div className="flex flex-wrap items-center gap-2 text-sm">
                 <span className="bg-[#FD853A] text-white px-3 py-1 rounded-full">
                   {blog.category}
                 </span>
@@ -60,6 +62,9 @@ export default function BlogList({ sort }) {
                     month: "long",
                     year: "numeric",
                   })}
+                </span>
+                <span className="bg-[#FD853A] text-white px-3 py-1 rounded-full">
+                  {blog.views || 0}x dilihat
                 </span>
               </div>
               <h3 className="text-xl font-bold text-black">{blog.title}</h3>
