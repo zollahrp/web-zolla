@@ -162,8 +162,8 @@ export default function Portfolio() {
           {projects.map((project, i) => (
             <motion.div
               key={i}
-              initial={{ opacity: 0, y: 40, scale: 0.95 }}
-              whileInView={{ opacity: 1, y: 0, scale: 1 }}
+              initial={{ opacity: 0, y: 40}}
+              whileInView={{ opacity: 1, y: 0}}
               transition={{
                 duration: 0.6,
                 delay: i * 0.2,

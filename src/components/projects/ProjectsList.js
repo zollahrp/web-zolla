@@ -183,15 +183,19 @@ export default function ProjectsList() {
           />
 
           {Array.isArray(project.category) && project.category.length > 0 && (
-            <div className="flex flex-wrap justify-center gap-2">
-              {project.category.map((cat, i) => (
-                <span
-                  key={i}
-                  className="bg-[#FD853A] text-white font-semibold text-sm px-3 py-1 rounded-full"
-                >
-                  {cat}
-                </span>
-              ))}
+            <div className="flex flex-col items-center gap-1">
+              <div className="flex flex-wrap justify-center gap-2">
+                {project.category.map((cat, i) => (
+                  <span
+                    key={i}
+                    className="bg-[#FD853A] text-white font-semibold text-sm px-3 py-1 rounded-full"
+                  >
+                    {cat}
+                  </span>
+                ))}
+              </div>
+              {/* Tanggal di bawah tag */}
+              <span className="text-sm text-gray-500">{project.date}</span>
             </div>
           )}
 

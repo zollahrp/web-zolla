@@ -8,14 +8,13 @@ export default function ProjectsPage() {
 
   return (
     <section className="py-26 bg-white">
-      {/* Tombol Kembali dibungkus dengan padding yang sama */}
       <div className="px-6 lg:px-100 mb-6">
         <button
           onClick={() => router.push("/")}
           className="flex items-center gap-2 text-[#FD853A] hover:underline"
         >
           <IoArrowBack size={20} />
-          <span>Kembali ke Beranda</span>
+          <span>Kembali</span>
         </button>
       </div>
 
