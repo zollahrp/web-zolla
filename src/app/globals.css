@@ -67,3 +67,68 @@ body {
 .btn-secondary {
   @apply bg-gray-200 hover:bg-gray-300 text-black;
 }
+
+/* Biar style dari TinyMCE tetep muncul meskipun dibungkus .prose */
+.prose h1, .prose h2, .prose h3, .prose h4, .prose h5, .prose h6 {
+  font-weight: 700;
+  margin-top: 1.2em;
+  margin-bottom: 0.5em;
+}
+
+.prose p[style*="text-align: justify"],
+.prose h1[style*="text-align: justify"],
+.prose h2[style*="text-align: justify"],
+.prose h3[style*="text-align: justify"],
+.prose h4[style*="text-align: justify"],
+.prose blockquote[style*="text-align: justify"],
+.prose li[style*="text-align: justify"] {
+  text-align: justify;
+}
+
+.prose blockquote {
+  border-left: 4px solid #ccc;
+  padding-left: 1em;
+  color: #555;
+  font-style: italic;
+  margin: 1.2em 0;
+}
+
+.prose ol {
+  list-style: decimal inside;
+  margin-left: 1em;
+}
+
+.prose ul {
+  list-style: disc inside;
+  margin-left: 1em;
+}
+
+.prose p {
+  line-height: 1.5; /* Jarak antar baris */
+  margin-bottom: 1.25em; /* Jarak antar paragraf */
+}
+
+.blog-content {
+  font-family: Arial, sans-serif;
+  line-height: 1.7;
+}
+
+.blog-content p {
+  margin-bottom: 1rem;
+}
+
+.blog-content span[style*="font-size: 8pt"] {
+  font-size: 10px;
+}
+.blog-content span[style*="font-size: 10pt"] {
+  font-size: 13px;
+}
+.blog-content span[style*="font-size: 12pt"] {
+  font-size: 16px;
+}
+.blog-content span[style*="font-size: 14pt"] {
+  font-size: 18px;
+}
+.blog-content span[style*="font-family: Arial"] {
+  font-family: Arial, sans-serif !important;
+}

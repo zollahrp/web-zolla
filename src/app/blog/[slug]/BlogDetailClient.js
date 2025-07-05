@@ -134,7 +134,7 @@ Bagikan dengan bijak dan sertakan sumber saat menyalin ya.
           )}
 
           <div
-            className="prose max-w-none text-black/90"
+            className="blog-content prose max-w-none text-black/90"
             dangerouslySetInnerHTML={{ __html: blog.content }}
           />
         </div>
