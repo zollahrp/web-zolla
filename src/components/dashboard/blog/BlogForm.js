@@ -112,7 +112,7 @@ export default function BlogForm({ onSubmit }) {
           height: 500,
           menubar: true,
           plugins:
-            "advlist autolink lists link image charmap print preview anchor \
+            "advlist autolink lists link image charmap preview anchor \
             searchreplace visualblocks code fullscreen insertdatetime media table code help wordcount",
           toolbar:
             "undo redo | styleselect | fontselect fontsizeselect | " +
@@ -133,10 +133,20 @@ export default function BlogForm({ onSubmit }) {
                 method: "POST",
                 body: formData,
               });
+
               const data = await res.json();
-              success(data.url);
+              console.log("Upload response:", data);
+
+              if (data.location) {
+                success(data.location); // HARUS `location`
+              } else {
+                failure("Upload berhasil tapi tidak dapat URL.");
+              }
             } catch (err) {
+              console.error("Upload error:", err);
               failure("Gagal upload gambar: " + err.message);
+
+              console.log("Upload result:", data);
             }
           },
         }}
