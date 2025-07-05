@@ -154,7 +154,7 @@ Bagikan dengan bijak dan sertakan sumber saat menyalin ya.
               >
                 <FaInstagram className="text-pink-500 text-2xl mb-1" />
                 <p className="font-semibold text-sm">Instagram</p>
-                <p className="text-sm font-bold">20K</p>
+                <p className="text-sm font-bold">1.8K</p>
                 <p className="text-xs text-gray-500">Followers</p>
               </a>
 
@@ -166,7 +166,7 @@ Bagikan dengan bijak dan sertakan sumber saat menyalin ya.
               >
                 <FaLinkedin className="text-blue-700 text-2xl mb-1" />
                 <p className="font-semibold text-sm">LinkedIn</p>
-                <p className="text-sm font-bold">5K</p>
+                <p className="text-sm font-bold">15</p>
                 <p className="text-xs text-gray-500">Connections</p>
               </a>
 
@@ -178,7 +178,7 @@ Bagikan dengan bijak dan sertakan sumber saat menyalin ya.
               >
                 <FaGithub className="text-black text-2xl mb-1" />
                 <p className="font-semibold text-sm">GitHub</p>
-                <p className="text-sm font-bold">88</p>
+                <p className="text-sm font-bold">23</p>
                 <p className="text-xs text-gray-500">Repos</p>
               </a>
 
@@ -190,7 +190,7 @@ Bagikan dengan bijak dan sertakan sumber saat menyalin ya.
               >
                 <FaNewspaper className="text-orange-500 text-2xl mb-1" />
                 <p className="font-semibold text-sm">Kompasiana</p>
-                <p className="text-sm font-bold">30+</p>
+                <p className="text-sm font-bold">2</p>
                 <p className="text-xs text-gray-500">Articles</p>
               </a>
 
@@ -202,7 +202,7 @@ Bagikan dengan bijak dan sertakan sumber saat menyalin ya.
               >
                 <FaYoutube className="text-red-500 text-2xl mb-1" />
                 <p className="font-semibold text-sm">YouTube</p>
-                <p className="text-sm font-bold">625K</p>
+                <p className="text-sm font-bold">2.3K</p>
                 <p className="text-xs text-gray-500">Subscribers</p>
               </a>
 
@@ -214,7 +214,7 @@ Bagikan dengan bijak dan sertakan sumber saat menyalin ya.
               >
                 <FaTiktok className="text-black text-2xl mb-1" />
                 <p className="font-semibold text-sm">TikTok</p>
-                <p className="text-sm font-bold">50K</p>
+                <p className="text-sm font-bold">4K</p>
                 <p className="text-xs text-gray-500">Followers</p>
               </a>
 
@@ -226,7 +226,7 @@ Bagikan dengan bijak dan sertakan sumber saat menyalin ya.
               >
                 <FaXTwitter className="text-black text-2xl mb-1" />
                 <p className="font-semibold text-sm">X (Twitter)</p>
-                <p className="text-sm font-bold">60K</p>
+                <p className="text-sm font-bold">4</p>
                 <p className="text-xs text-gray-500">Followers</p>
               </a>
             </div>
