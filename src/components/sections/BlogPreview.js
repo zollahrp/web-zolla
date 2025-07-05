@@ -25,8 +25,8 @@ export default function BlogPreview() {
   return (
     <section id="blogs" className="pt-20 bg-gray-50 py-20">
       {/* Header */}
-      <div className="max-w-screen-xl mx-auto px-8 lg:px-20 flex flex-col-reverse sm:flex-row items-start sm:items-center justify-between gap-6 mb-10">
-        {/* Judul */}
+      <div className="max-w-screen-xl mx-auto px-8 lg:px-20 mb-10 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6">
+        {/* Judul + Subjudul */}
         <div>
           <motion.div
             className="flex items-center gap-2 mb-2"
@@ -55,7 +55,7 @@ export default function BlogPreview() {
         {/* Tombol */}
         <motion.a
           href="/blog"
-          className="relative w-[250px] self-center sm:self-auto group"
+          className="relative w-[250px] group self-start sm:self-auto"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.1 }}
@@ -85,7 +85,6 @@ export default function BlogPreview() {
           </div>
         </motion.a>
       </div>
-
       {/* Grid Blog */}
       <div className="max-w-screen-xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 px-8 lg:px-20">
         {blogs.map((blog, i) => (

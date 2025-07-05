@@ -94,7 +94,7 @@ export default function Portfolio() {
     <section id="portfolio" className="bg-[#F2F4F7] py-20">
       <div className="max-w-screen-xl mx-auto px-6 lg:px-20">
         {/* Header */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 sm:items-center mb-10 gap-4 sm:gap-0">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-10 gap-6">
           {/* Judul + Subjudul */}
           <div>
             <motion.div
@@ -121,7 +121,7 @@ export default function Portfolio() {
           {/* Tombol */}
           <motion.a
             href="/projects"
-            className="relative w-[250px] group"
+            className="relative w-[250px] group sm:self-start"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
