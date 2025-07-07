@@ -12,9 +12,9 @@ import LenisWrapper from "@/components/LenisWrapper";
 export const metadata = {
   title: "Website Zolla Perdana Putra Harahap",
   description:
-    "Website resmi Zolla. Jelajahi portofolio, artikel, pencapaian, dan kontak dalam satu halaman interaktif.",
+    "Website resmi Zolla yang berisi portofolio, pengalaman, blog seputar dunia lomba dan pengembangan diri serta kisah inspiratif dari seorang juara essay nasional.",
   keywords:
-    "Zolla, Portofolio, Penulis, Software Engineer, Lomba, IPB, Essay, Developer",
+    "Zolla, Portofolio, Software Engineer, Lomba, Essay Juara, Developer Indonesia, IPB, Blog Lomba, Web Developer, Penulis, Blog, Zolla Perdana Putra Haeahap",
   authors: [{ name: "Zolla Perdana Putra Harahap" }],
 };
 

@@ -1,9 +1,9 @@
 export const metadata = {
   title: "Zolla nge-Blog",
   description:
-    "Temukan kumpulan tulisan Zolla mulai dari tips lomba, software, opini, hingga tutorial coding.",
+    "Temukan kumpulan tulisan Zolla dari dunia lomba, tips juara, opini khas anak IPB, hingga cerita keseharian yang kocak.",
   keywords:
-    "Zolla, Blog, Lomba Esai, Artikel, IPB, Essay, Developer, Tips Menulis",
+    "Zolla, Blog, Lomba Esai, Essay Juara, Tips Menulis, Tutorial Coding, IPB, Pengalaman Lomba, Web Developer Muda, Artikel",
   authors: [{ name: "Zolla Perdana Putra Harahap" }],
 };
 

@@ -1,8 +1,8 @@
 export const metadata = {
   title: "Projects Zolla",
   description:
-    "Kumpulan project yang dikerjakan oleh Zolla Perdana Putra Harahap, dari web app, mobile app, hingga desain UI/UX.",
-  keywords: "Zolla, Project, Portfolio, Developer, Tailwind, React, UI UX",
+    "Kumpulan proyek terbaik Zolla, mulai dari web apps, desain UI/UX kreatif, hingga mobile prototype. Jelajahi hasil karya developer muda Indonesia yang penuh visi.",
+  keywords: "Zolla, Project, Portofolio Developer, Frontend Developer Indonesia, React, Tailwind, UI UX Design, Web App, Creative Portfolio, Web Developer, Projects",
   authors: [{ name: "Zolla Perdana Putra Harahap" }],
 };
 
