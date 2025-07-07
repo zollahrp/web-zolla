@@ -144,7 +144,7 @@ Bagikan dengan bijak dan sertakan sumber saat menyalin ya.
       <div className="lg:col-span-4 mt-[20px]">
         <aside className="lg:col-span-4 space-y-10">
           <div>
-            <h3 className="font-bold mb-4">Follow Saya</h3>
+            <h3 className="font-bold mb-4">Let's Connect!</h3>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
               <a
                 href="https://www.instagram.com/zollahrp"
@@ -246,8 +246,7 @@ Bagikan dengan bijak dan sertakan sumber saat menyalin ya.
 
             <p className="text-sm text-gray-600 leading-relaxed">
               Penulis, pemimpi, dan pembelajar seumur hidup. Blog ini adalah
-              tempat saya berbagi cerita, pikiran, dan perjalanan dalam hidup,
-              teknologi, dan makna-makna kecil sehari-hari.
+              tempat aku berbagi cerita, pikiran, dan perjalanan dalam hidup serta makna-makna kecil sehari-hari.
             </p>
           </div>
 
