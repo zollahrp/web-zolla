@@ -15,7 +15,7 @@ import {
 export default function BlogDetailClient({ blog }) {
   const router = useRouter();
   const [latestBlogs, setLatestBlogs] = useState([]);
-  const [popularBlogs, setPopularBlogs] = useState([]); // <- Tambah state ini
+  const [popularBlogs, setPopularBlogs] = useState([]);
 
   // Tambah view setiap blog dibuka
   useEffect(() => {
@@ -25,7 +25,6 @@ export default function BlogDetailClient({ blog }) {
     });
   }, [blog?.id]);
 
-  // Copy protection + fetch latest & popular
   useEffect(() => {
     const handleCopy = (e) => {
       const selection = window.getSelection();
@@ -246,7 +245,8 @@ Bagikan dengan bijak dan sertakan sumber saat menyalin ya.
 
             <p className="text-sm text-gray-600 leading-relaxed">
               Penulis, pemimpi, dan pembelajar seumur hidup. Blog ini adalah
-              tempat aku berbagi cerita, pikiran, dan perjalanan dalam hidup serta makna-makna kecil sehari-hari.
+              tempat aku berbagi cerita, pikiran, dan perjalanan dalam hidup
+              serta makna-makna kecil sehari-hari.
             </p>
           </div>
 
