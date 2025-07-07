@@ -105,7 +105,7 @@ export default function BlogForm({ onSubmit }) {
       />
 
       <Editor
-        apiKey="rlskrql5lw0bg2cq2szokhqn2zror6f5sxgy4m53ek1h3z3d"
+        tinymceScriptSrc="/tinymce/tinymce.min.js"
         value={content}
         onEditorChange={(newContent) => setContent(newContent)}
         init={{
