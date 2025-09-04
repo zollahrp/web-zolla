@@ -31,7 +31,7 @@ export default function Home() {
   return (
     <section id="home" className="relative w-full overflow-hidden mt-16">
       {/* === Hero Section === */}
-      <div className="max-w-screen-xl mx-auto px-8 lg:px-20 pt-20">
+      <div className="bg-white max-w-screen-xl mx-auto px-8 lg:px-20 pt-20">
         {/* === Desktop Layout === */}
         <div className="hidden lg:flex flex-row items-center justify-between gap-10">
           {/* Left Text */}
