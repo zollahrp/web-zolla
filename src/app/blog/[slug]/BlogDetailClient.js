@@ -158,7 +158,7 @@ Bagikan dengan bijak dan sertakan sumber saat menyalin ya.
               </a>
 
               <a
-                href="https://www.linkedin.com/in/zolla/"
+                href="https://www.linkedin.com/in/zollahrp/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex flex-col items-center text-center p-3 bg-white rounded-xl shadow-sm hover:shadow-md transition"

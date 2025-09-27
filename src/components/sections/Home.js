@@ -20,7 +20,6 @@ export default function Home() {
         words,
         { opacity: [0, 1], y: [10, 0] },
         {
-          type: "spring",
           duration: 1.6,
           delay: stagger(0.05),
         }
@@ -29,7 +28,7 @@ export default function Home() {
   }, []);
 
   return (
-    <section id="home" className="relative w-full overflow-hidden mt-16">
+    <section id="home" className="bg-white relative w-full overflow-hidden mt-16">
       {/* === Hero Section === */}
       <div className="bg-white max-w-screen-xl mx-auto px-8 lg:px-20 pt-20">
         {/* === Desktop Layout === */}

@@ -4,6 +4,7 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  color-scheme: light;
 }
 
 @theme inline {
@@ -131,4 +132,9 @@ body {
 }
 .blog-content span[style*="font-family: Arial"] {
   font-family: Arial, sans-serif !important;
+}
+
+html, body {
+  background-color: #ffffff !important; /* biar gak ikut dark */
+  color: #000000;
 }

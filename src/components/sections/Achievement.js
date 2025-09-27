@@ -53,7 +53,8 @@ export default function Achievement() {
           transition={{ duration: 0.6, delay: 0.1 }}
           viewport={{ once: true }}
         >
-          <span className="text-[#FD853A]">Pencapaian</span> yang Saya Peroleh
+          <span className="text-[#FD853A]">Pencapaian</span>{" "}
+          <span className="text-black">yang Saya Peroleh</span>
         </motion.h2>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-0">

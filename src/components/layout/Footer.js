@@ -20,7 +20,7 @@ export default function Footer() {
             <a href="https://instagram.com/zollahrp" target="_blank">
               <FaInstagram />
             </a>
-            <a href="https://linkedin.com/in/zolla" target="_blank">
+            <a href="https://linkedin.com/in/zollahrp" target="_blank">
               <FaLinkedin />
             </a>
             <a href="https://github.com/zollahrp" target="_blank">

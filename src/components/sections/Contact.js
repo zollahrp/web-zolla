@@ -52,7 +52,7 @@ export default function Contact() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: "easeOut" }}
           viewport={{ once: true }}
-          className="text-3xl sm:text-4xl font-bold mb-8"
+          className="text-3xl sm:text-4xl font-bold mb-8 text-black"
         >
           Memiliki ide, pertanyaan, atau kolaborasi? Saya terbuka untuk{" "}
           <span className="text-[#FD853A]">berdiskusi dan bekerja sama.</span>
@@ -122,7 +122,7 @@ export default function Contact() {
             {
               icon: <FaLinkedin />,
               label: "Zolla Perdana Putra Harahap",
-              href: "https://www.linkedin.com/in/zolla/",
+              href: "https://www.linkedin.com/in/zollahrp/",
             },
             {
               icon: <FaGithub />,

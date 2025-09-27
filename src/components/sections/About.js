@@ -60,7 +60,8 @@ export default function About() {
             transition={{ duration: 0.6, delay: 0.6 }}
             viewport={{ once: true }}
           >
-            Siapa itu <span className="text-[#FD853A]">Zolla Perdana</span>?
+            <span className="text-black">Siapa itu</span>{" "}
+            <span className="text-[#FD853A]">Zolla Perdana</span>?
           </motion.h2>
 
           <motion.p

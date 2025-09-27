@@ -38,7 +38,7 @@ export default function BlogPage() {
       {/* Blog List Section */}
       <section
         id="list"
-        className="pt-10 px-6 lg:px-20 max-w-screen-xl mx-auto"
+        className="bg-white pt-10 px-6 lg:px-20 max-w-screen-xl mx-auto"
       >
         {/* Header dan Filter */}
         <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 ">

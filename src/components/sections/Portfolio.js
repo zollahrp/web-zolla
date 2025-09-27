@@ -114,7 +114,8 @@ export default function Portfolio() {
               transition={{ duration: 0.6, delay: 0.1 }}
               viewport={{ once: true }}
             >
-              <span className="text-[#FD853A]">Proyek</span> Terbaru Saya
+              <span className="text-[#FD853A]">Proyek</span>{" "}
+              <span className="text-black">Terbaru Saya</span>
             </motion.h2>
           </div>
 
@@ -162,8 +163,8 @@ export default function Portfolio() {
           {projects.map((project, i) => (
             <motion.div
               key={i}
-              initial={{ opacity: 0, y: 40}}
-              whileInView={{ opacity: 1, y: 0}}
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
               transition={{
                 duration: 0.6,
                 delay: i * 0.2,
