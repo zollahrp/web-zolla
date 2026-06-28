@@ -14,7 +14,7 @@ export const metadata = {
   description:
     "Website resmi Zolla yang berisi portofolio, pengalaman, blog seputar dunia lomba dan pengembangan diri serta kisah inspiratif dari seorang juara essay nasional.",
   keywords:
-    "Zolla, Portofolio, Software Engineer, Lomba, Essay Juara, Developer Indonesia, IPB, Blog Lomba, Web Developer, Penulis, Blog, Zolla Perdana Putra Haeahap",
+    "Zolla, Portofolio, Software Engineer, Lomba, Essay Juara, Developer Indonesia, IPB, Blog Lomba, Web Developer, Penulis, Blog, Zolla Perdana Putra Haeahapp",
   authors: [{ name: "Zolla Perdana Putra Harahap" }],
 };
 
