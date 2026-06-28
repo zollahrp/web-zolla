@@ -65,7 +65,7 @@ export default function Home() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 1.9 }}
             >
-              Mahasiswa Sarjana Terapan Teknologi Rekayasa Perangkat Lunak di
+              Mahasiswa Sarjana Terapan Teknologi Rekayasa Perangkat Lunak di mana hayo
               Sekolah Vokasi IPB University. Aktif mengikuti berbagai kompetisi
               dan menjelajahi tantangan di bidang teknologi, lingkungan, dan
               pendidikan melalui pendekatan yang kreatif dan inovatif.
