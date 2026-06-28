@@ -100,7 +100,7 @@ export const NavItems = ({
             key={`link-${idx}`}
             onClick={item.onClick}
             onMouseEnter={() => setHovered(idx)}
-            className="relative px-4 py-2 text-neutral-600 dark:text-neutral-300"
+            className="relative cursor-pointer px-4 py-2 text-neutral-600 dark:text-neutral-300"
           >
             {(isHovered || isActive) && (
               <motion.div

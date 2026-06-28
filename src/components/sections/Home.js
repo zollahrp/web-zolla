@@ -22,13 +22,16 @@ export default function Home() {
         {
           duration: 1.6,
           delay: stagger(0.05),
-        }
+        },
       );
     });
   }, []);
 
   return (
-    <section id="home" className="bg-white relative w-full overflow-hidden mt-16">
+    <section
+      id="home"
+      className="bg-white relative w-full overflow-hidden mt-16"
+    >
       {/* === Hero Section === */}
       <div className="bg-white max-w-screen-xl mx-auto px-8 lg:px-20 pt-20">
         {/* === Desktop Layout === */}
@@ -65,10 +68,16 @@ export default function Home() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 1.9 }}
             >
-              Mahasiswa Sarjana Terapan Teknologi Rekayasa Perangkat Lunak di mana hayo
-              Sekolah Vokasi IPB University. Aktif mengikuti berbagai kompetisi
-              dan menjelajahi tantangan di bidang teknologi, lingkungan, dan
-              pendidikan melalui pendekatan yang kreatif dan inovatif.
+              Mahasiswa Sarjana Terapan Teknologi Rekayasa Perangkat Lunak di
+              Sekolah Vokasi IPB University yang adaptif, penuh rasa ingin tahu,
+              dan berjiwa inovator. Memiliki pendekatan analitis, penelitian dan
+              kreatif dalam menghadapi tantangan di bidang teknologi. Terampil
+              dalam mengembangkan ide out-of-the-box menjadi solusi digital yang
+              aplikatif, didukung oleh kemampuan komunikasi dan penyusunan
+              narasi yang kuat. Dikenal memiliki inisiatif, kemampuan
+              beradaptasi, serta kolaborasi yang baik. Memiliki visi untuk terus
+              belajar, tumbuh, dan berkontribusi melalui karya yang berdampak
+              nyata bagi masyarakat.
             </motion.p>
 
             <motion.button
@@ -235,7 +244,7 @@ export default function Home() {
               ✕
             </button>
             <iframe
-              src="https://rcljtsnaqwlqnbwknsdm.supabase.co/storage/v1/object/public/cv-files//CV_Zolla%20Perdana%20Putra%20Harahap.pdf"
+              src="https://rcljtsnaqwlqnbwknsdm.supabase.co/storage/v1/object/public/cv-files/CV_Zolla%20Perdana%20Putra%20Harahap.pdf"
               className="w-full h-full"
               loading="lazy"
               title="Curriculum Vitae Zolla Perdana"

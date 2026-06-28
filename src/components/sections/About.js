@@ -71,12 +71,13 @@ export default function About() {
             transition={{ duration: 0.6, delay: 0.7 }}
             viewport={{ once: true }}
           >
-            Seorang Mahasiswa Sarjana Terapan Teknologi Rekayasa Perangkat Lunak
-            di Sekolah Vokasi IPB University yang dikenal memiliki sifat
-            adaptif, penuh rasa ingin tahu, dan berjiwa inovator. Aktif
-            mengikuti berbagai kompetisi dan menjelajahi tantangan di bidang
-            teknologi, lingkungan, dan pendidikan melalui pendekatan yang
-            kreatif dan inovatif.
+            Mahasiswa Berprestasi IPB University sekaligus mahasiswa Sarjana
+            Terapan Teknologi Rekayasa Perangkat Lunak di Sekolah Vokasi IPB
+            University. Dikenal sebagai pribadi yang adaptif, memiliki rasa
+            ingin tahu tinggi, dan berjiwa inovator. Aktif mengikuti berbagai
+            kompetisi serta mengembangkan solusi di bidang teknologi,
+            lingkungan, dan pendidikan melalui pendekatan yang kreatif,
+            inovatif, dan berorientasi pada dampak.
           </motion.p>
 
           {/* Statistik */}
@@ -152,7 +153,7 @@ export default function About() {
           >
             {/* Button Download CV */}
             <a
-              href="/CV_Zolla Perdana Putra Harahap.pdf"
+              href="https://rcljtsnaqwlqnbwknsdm.supabase.co/storage/v1/object/public/cv-files/CV_Zolla%20Perdana%20Putra%20Harahap.pdf"
               download
               className="relative w-[300px] block group"
             >
