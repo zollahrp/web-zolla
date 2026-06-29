@@ -35,8 +35,9 @@ export default function ProjectsPage() {
           </h1>
 
           <p className="mt-3 text-gray-500 max-w-xl">
-            Explore website, mobile application, UI/UX, research, and digital
-            innovation that I've built.
+            Kumpulan website, aplikasi mobile, desain UI/UX, penelitian, dan
+            berbagai inovasi digital yang saya rancang untuk menghadirkan solusi
+            nyata melalui teknologi.
           </p>
         </div>
 
