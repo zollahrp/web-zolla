@@ -138,3 +138,13 @@ html, body {
   background-color: #ffffff !important; /* biar gak ikut dark */
   color: #000000;
 }
+
+.swiper-pagination-bullet{
+    background:#fff !important;
+    opacity:.5;
+}
+
+.swiper-pagination-bullet-active{
+    background:#FD853A !important;
+    opacity:1;
+}

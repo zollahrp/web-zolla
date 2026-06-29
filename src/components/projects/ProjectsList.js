@@ -37,8 +37,8 @@ const getIcon = (tech) =>
 
 const categories = ["Semua", "Website", "Mobile App", "UI/UX", "Tulisan"];
 
-export default function ProjectsList() {
-  const [selected, setSelected] = useState("Semua");
+export default function ProjectsList({ selectedCategory, searchQuery }) {
+  // const [selected, setSelected] = useState("Semua");
   const [projects, setProjects] = useState([]);
   const router = useRouter();
 
@@ -68,8 +68,8 @@ export default function ProjectsList() {
         const parts = dateString.includes("–")
           ? dateString.split("–")
           : dateString.includes("-")
-          ? dateString.split("-")
-          : [dateString, dateString];
+            ? dateString.split("-")
+            : [dateString, dateString];
 
         const startPart = parts[0].trim();
         const [monthStr, yearStr] = startPart.split(" ");
@@ -90,14 +90,23 @@ export default function ProjectsList() {
     fetchProjects();
   }, []);
 
-  const filteredProjects =
-    selected === "Semua"
-      ? projects
-      : projects.filter((proj) =>
-          Array.isArray(proj.category)
-            ? proj.category.includes(selected)
-            : proj.category === selected
-        );
+  const filteredProjects = projects.filter((project) => {
+    const matchCategory =
+      selectedCategory === "Semua" ||
+      (Array.isArray(project.category)
+        ? project.category.includes(selectedCategory)
+        : project.category === selectedCategory);
+
+    const keyword = (searchQuery || "").toLowerCase();
+
+    const matchSearch =
+      project.title?.toLowerCase().includes(keyword) ||
+      project.desc?.toLowerCase().includes(keyword) ||
+      project.tech?.join(" ").toLowerCase().includes(keyword) ||
+      project.category?.join(" ").toLowerCase().includes(keyword);
+
+    return matchCategory && matchSearch;
+  });
 
   const getIcon = (tech) =>
     iconMap[tech.toLowerCase()] || (
@@ -108,7 +117,7 @@ export default function ProjectsList() {
 
   return (
     <section className="max-w-screen-md mx-auto px-6 flex flex-col gap-16 pt-0">
-      {/* Filter */}
+      {/* Filter
       <div className="flex flex-wrap justify-center gap-3">
         {categories.map((cat) => (
           <button
@@ -123,7 +132,7 @@ export default function ProjectsList() {
             {cat}
           </button>
         ))}
-      </div>
+      </div> */}
 
       {/* List of Projects */}
       {filteredProjects.map((project, idx) => (
